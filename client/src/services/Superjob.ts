@@ -75,7 +75,7 @@ export class SuperjobService {
         }
     }
 
-    async getVacancies(params: VacanciesParams): Promise<any> {
+    async getVacancies(params: VacanciesParams): Promise<Vacancy[] | undefined> {
 
         try {
             const response = await axios.get(`${this.url}/2.0/vacancies/${this.buildVacanciesParams(params)}`,
@@ -88,6 +88,25 @@ export class SuperjobService {
                 });
 
             return response.data.objects.map((vacancy: any) => this.transformVacancy(vacancy));
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    async getVacancyInfo(vacancy_id: string): Promise<Vacancy | undefined> {
+
+        try {
+            const response = await axios.get(`${this.url}/2.0/vacancies/${vacancy_id}`,
+                {
+                    headers: {
+                        "x-secret-key": this.proxy_key,
+                        "X-Api-App-Id": this.client_secret,
+                        "Authorization": `Bearer ${this.access_token}`
+                    }
+                });
+
+            return this.transformVacancy(response.data);
         }
         catch (err) {
             console.log(err);
