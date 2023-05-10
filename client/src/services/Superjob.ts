@@ -18,6 +18,12 @@ export interface Vacancy {
     currency: string;
 }
 
+interface VacanciesParams {
+    catalogue_id: string;
+    payment_from: string;
+    payment_to: string;
+}
+
 
 export class SuperjobService {
 
@@ -69,10 +75,10 @@ export class SuperjobService {
         }
     }
 
-    async getVacancies(): Promise<Vacancy[] | undefined> {
+    async getVacancies(params: VacanciesParams): Promise<any> {
 
         try {
-            const response = await axios.get(`${this.url}/2.0/vacancies/`,
+            const response = await axios.get(`${this.url}/2.0/vacancies/${this.buildVacanciesParams(params)}`,
                 {
                     headers: {
                         "x-secret-key": this.proxy_key,
@@ -88,7 +94,33 @@ export class SuperjobService {
         }
     }
 
-    transformCatalogue(catalogue: any):  Catalogue {
+    private buildVacanciesParams(params: VacanciesParams): string | undefined {
+
+        try {
+            const {catalogue_id, payment_from, payment_to}: VacanciesParams = params;
+            const vacancies_params: string[] = [];
+
+            if (catalogue_id) {
+                vacancies_params.push(`catalogues=${encodeURIComponent(catalogue_id)}`);
+            }
+
+            if (payment_from || payment_to) {
+                let order_url: string = "order_field=payment&order_direction=asc&no_agreement=1&";
+
+                if (payment_from) order_url += `payment_from=${encodeURIComponent(payment_from)}`;
+                if (payment_to) order_url += `${payment_from && "&"}payment_to=${encodeURIComponent(payment_to)}`;
+
+                vacancies_params.push(order_url);
+            }
+
+            return vacancies_params.length ? `?${vacancies_params.join('&')}` : '';
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    private transformCatalogue(catalogue: any):  Catalogue {
         return {
             id: catalogue.key,
             title: catalogue.title,
@@ -96,7 +128,7 @@ export class SuperjobService {
         }
     }
 
-    transformVacancy(vacancy: any): Vacancy {
+    private transformVacancy(vacancy: any): Vacancy {
         return {
             id: vacancy.id,
             profession: vacancy.profession,
