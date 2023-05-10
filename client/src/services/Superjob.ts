@@ -7,6 +7,17 @@ export interface Catalogue {
     title_trimmed: string;
 }
 
+export interface Vacancy {
+    id: number;
+    profession: string;
+    firm_name: string;
+    town: string;
+    type_of_work: string;
+    payment_to: string;
+    payment_from: string;
+    currency: string;
+}
+
 
 export class SuperjobService {
 
@@ -35,7 +46,7 @@ export class SuperjobService {
             this.refresh_token = response.data.refresh_token;
         }
         catch (err: any) {
-            console.log(err)
+            console.log(err);
         }
     }
 
@@ -49,12 +60,31 @@ export class SuperjobService {
                         "X-Api-App-Id": this.client_secret,
                         "Authorization": `Bearer ${this.access_token}`
                     }
-                })
+                });
 
-            return response.data.map((catalogue: any) => this.transformCatalogue(catalogue))
+            return response.data.map((catalogue: any) => this.transformCatalogue(catalogue));
         }
         catch (err: any) {
-            console.log(err)
+            console.log(err);
+        }
+    }
+
+    async getVacancies(): Promise<Vacancy[] | undefined> {
+
+        try {
+            const response = await axios.get(`${this.url}/2.0/vacancies/`,
+                {
+                    headers: {
+                        "x-secret-key": this.proxy_key,
+                        "X-Api-App-Id": this.client_secret,
+                        "Authorization": `Bearer ${this.access_token}`
+                    }
+                });
+
+            return response.data.objects.map((vacancy: any) => this.transformVacancy(vacancy));
+        }
+        catch (err) {
+            console.log(err);
         }
     }
 
@@ -63,6 +93,19 @@ export class SuperjobService {
             id: catalogue.key,
             title: catalogue.title,
             title_trimmed: catalogue.title_trimmed
+        }
+    }
+
+    transformVacancy(vacancy: any): Vacancy {
+        return {
+            id: vacancy.id,
+            profession: vacancy.profession,
+            firm_name: vacancy.firm_name,
+            town: vacancy.town.title,
+            type_of_work: vacancy.type_of_work.title,
+            payment_to: vacancy.payment_to,
+            payment_from: vacancy.payment_from,
+            currency: vacancy.currency
         }
     }
 }
