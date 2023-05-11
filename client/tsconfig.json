@@ -23,6 +23,7 @@
     "paths": {
       "components": ["./components/index.ts"],
       "services": ["./services/index.ts"],
+      "hooks": ["./hooks/index.ts"],
     }
   },
   "include": [
