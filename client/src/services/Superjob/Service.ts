@@ -1,6 +1,9 @@
 import axios from "axios";
+import Cookies from "universal-cookie";
+
 import {Catalogue, Vacancy, VacanciesParams} from "./Types";
 
+const cookies = new Cookies();
 
 export class SuperjobService {
 
@@ -18,19 +21,31 @@ export class SuperjobService {
     static async authorize(): Promise<void | undefined> {
 
         try {
-           const response = await axios.get(
-                `${this.url}/2.0/oauth2/password/?login=${this.login}&password=${this.password}&client_id=${this.client_id}&client_secret=${this.client_secret}`,
-                {
-                    headers: {
-                        "x-secret-key": this.proxy_key
-                    }
-                });
+            const cookie_access_token = cookies.get("access_token")
 
-            this.access_token = response.data.access_token;
-            this.refresh_token = response.data.refresh_token;
+            if (!cookie_access_token) {
+                const response = await axios.get(
+                    `${this.url}/2.0/oauth2/password/?login=${this.login}&password=${this.password}&client_id=${this.client_id}&client_secret=${this.client_secret}`,
+                    {
+                        headers: {
+                            "x-secret-key": this.proxy_key
+                        }
+                    });
+
+                this.access_token = response.data.access_token;
+                cookies.set("access_token", response.data.access_token);
+
+                this.refresh_token = response.data.refresh_token;
+                cookies.set("refresh_token", response.data.access_token);
+            }
+            else {
+                this.access_token = cookie_access_token;
+                this.refresh_token = cookies.get("refresh_token");
+            }
+
         }
         catch (err: any) {
-            console.log(err);
+            await this.handleError(err);
         }
     }
 
@@ -46,10 +61,13 @@ export class SuperjobService {
                 });
 
             this.access_token = response.data.access_token;
+            cookies.set("access_token", response.data.access_token);
+
             this.refresh_token = response.data.refresh_token;
+            cookies.set("refresh_token", response.data.access_token);
         }
         catch (err: any) {
-            console.log(err);
+            await this.handleError(err);
         }
     }
 
@@ -70,7 +88,7 @@ export class SuperjobService {
             return response.data.map((catalogue: any) => this.transformCatalogue(catalogue));
         }
         catch (err: any) {
-            console.log(err);
+            await this.handleError(err);
         }
     }
 
@@ -91,7 +109,7 @@ export class SuperjobService {
             return response.data.objects.map((vacancy: any) => this.transformVacancy(vacancy));
         }
         catch (err) {
-            console.log(err);
+            await this.handleError(err);
         }
     }
 
@@ -112,8 +130,17 @@ export class SuperjobService {
             return this.transformVacancy(response.data);
         }
         catch (err) {
-            console.log(err);
+            await this.handleError(err);
         }
+    }
+
+    private static async handleError(error: any) {
+
+        if (error.response.status == 410 && error.response.data.error == "invalid_token") {
+            await this.refreshAccessToken();
+        }
+
+        console.log(error.toString());
     }
 
     private static buildVacanciesParams(params: VacanciesParams): string | undefined {
