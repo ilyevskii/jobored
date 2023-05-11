@@ -24,6 +24,11 @@
     border: 1px solid var(--grey-300);
     border-radius: 8px;
     padding: 8px 12px;
+    transition: 0.2s ease;
+}
+
+.filters-container input:hover {
+    border: 1px solid var(--grey-500);
 }
 
 .filters-container input:focus {
