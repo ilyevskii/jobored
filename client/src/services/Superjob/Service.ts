@@ -171,9 +171,8 @@ export class SuperjobService {
 
     private static transformCatalogue(catalogue: any):  Catalogue {
         return {
-            id: catalogue.key,
-            title: catalogue.title,
-            title_trimmed: catalogue.title_trimmed
+            value: catalogue.key,
+            label: catalogue.title.length < 30 ? catalogue.title : catalogue.title_trimmed,
         }
     }
 

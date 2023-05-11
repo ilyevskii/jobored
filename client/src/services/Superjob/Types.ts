@@ -1,8 +1,7 @@
 
 export interface Catalogue {
-    id: number;
-    title: string;
-    title_trimmed: string;
+    value: string;
+    label: string;
 }
 
 export interface Vacancy {
