@@ -4,20 +4,21 @@ import {Catalogue, Vacancy, VacanciesParams} from "./Types";
 
 export class SuperjobService {
 
-    private access_token?: string;
-    private refresh_token?: string;
+    private static access_token?: string;
+    private static refresh_token?: string;
 
-    private readonly url: string = process.env.REACT_APP_SUPERJOB_API_URL!;
-    private readonly login: string = process.env.REACT_APP_SUPERJOB_LOGIN!
-    private readonly password: string =  process.env.REACT_APP_SUPERJOB_PASSWORD!
-    private readonly client_id: string =  process.env.REACT_APP_SUPERJOB_CLIENT_ID!
-    private readonly client_secret: string =  process.env.REACT_APP_SUPERJOB_CLIENT_SECRET!
-    private readonly proxy_key: string =  process.env.REACT_APP_SUPERJOB_PROXY_KEY!
+    private static readonly url: string = process.env.REACT_APP_SUPERJOB_API_URL!;
+    private static readonly login: string = process.env.REACT_APP_SUPERJOB_LOGIN!
+    private static readonly password: string =  process.env.REACT_APP_SUPERJOB_PASSWORD!
+    private static readonly client_id: string =  process.env.REACT_APP_SUPERJOB_CLIENT_ID!
+    private static readonly client_secret: string =  process.env.REACT_APP_SUPERJOB_CLIENT_SECRET!
+    private static readonly proxy_key: string =  process.env.REACT_APP_SUPERJOB_PROXY_KEY!
 
-    async authorize(): Promise<void | undefined> {
+
+    static async authorize(): Promise<void | undefined> {
 
         try {
-            const response = await axios.get(
+           const response = await axios.get(
                 `${this.url}/2.0/oauth2/password/?login=${this.login}&password=${this.password}&client_id=${this.client_id}&client_secret=${this.client_secret}`,
                 {
                     headers: {
@@ -33,9 +34,30 @@ export class SuperjobService {
         }
     }
 
-    async getCatalogues(): Promise<Catalogue[] | undefined> {
+    static async refreshAccessToken(): Promise<void | undefined> {
 
         try {
+           const response = await axios.get(
+                `${this.url}/2.0/oauth2/refresh_token/?refresh_token=${this.refresh_token}&client_id=${this.client_id}&client_secret=${this.client_secret}`,
+                {
+                    headers: {
+                        "x-secret-key": this.proxy_key
+                    }
+                });
+
+            this.access_token = response.data.access_token;
+            this.refresh_token = response.data.refresh_token;
+        }
+        catch (err: any) {
+            console.log(err);
+        }
+    }
+
+    static async getCatalogues(): Promise<Catalogue[] | undefined> {
+
+        try {
+            if (!this.access_token) await this.authorize();
+
             const response = await axios.get(`${this.url}/2.0/catalogues/`,
                 {
                     headers: {
@@ -52,9 +74,11 @@ export class SuperjobService {
         }
     }
 
-    async getVacancies(params: VacanciesParams): Promise<Vacancy[] | undefined> {
+    static async getVacancies(params: VacanciesParams): Promise<Vacancy[] | undefined> {
 
         try {
+            if (!this.access_token) await this.authorize();
+
             const response = await axios.get(`${this.url}/2.0/vacancies/${this.buildVacanciesParams(params)}`,
                 {
                     headers: {
@@ -71,9 +95,11 @@ export class SuperjobService {
         }
     }
 
-    async getVacancyInfo(vacancy_id: string): Promise<Vacancy | undefined> {
+    static async getVacancyInfo(vacancy_id: string): Promise<Vacancy | undefined> {
 
         try {
+            if (!this.access_token) await this.authorize();
+
             const response = await axios.get(`${this.url}/2.0/vacancies/${vacancy_id}`,
                 {
                     headers: {
@@ -90,7 +116,7 @@ export class SuperjobService {
         }
     }
 
-    private buildVacanciesParams(params: VacanciesParams): string | undefined {
+    private static buildVacanciesParams(params: VacanciesParams): string | undefined {
 
         try {
             const {catalogue_id, payment_from, payment_to}: VacanciesParams = params;
@@ -116,7 +142,7 @@ export class SuperjobService {
         }
     }
 
-    private transformCatalogue(catalogue: any):  Catalogue {
+    private static transformCatalogue(catalogue: any):  Catalogue {
         return {
             id: catalogue.key,
             title: catalogue.title,
@@ -124,7 +150,7 @@ export class SuperjobService {
         }
     }
 
-    private transformVacancy(vacancy: any): Vacancy {
+    private static transformVacancy(vacancy: any): Vacancy {
         return {
             id: vacancy.id,
             profession: vacancy.profession,
