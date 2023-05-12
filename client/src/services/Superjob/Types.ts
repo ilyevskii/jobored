@@ -15,8 +15,19 @@ export interface Vacancy {
     currency: string;
 }
 
-export interface VacanciesParams {
+export interface FiltersParams {
     catalogue_id: string;
     payment_from: string;
     payment_to: string;
+}
+
+export interface SearchbarParams {
+    keywords: string;
+}
+
+export interface RequestParams {
+    catalogue_id: string;
+    payment_from: string;
+    payment_to: string;
+    keywords: string;
 }

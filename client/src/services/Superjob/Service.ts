@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 
-import {Catalogue, Vacancy, VacanciesParams} from "./Types";
+import {Catalogue, Vacancy, FiltersParams, RequestParams} from "./Types";
 
 const cookies = new Cookies();
 
@@ -92,7 +92,7 @@ export class SuperjobService {
         }
     }
 
-    static async getVacancies(params: VacanciesParams): Promise<Vacancy[] | undefined> {
+    static async getVacancies(params: RequestParams): Promise<Vacancy[] | undefined> {
 
         try {
             if (!this.access_token) await this.authorize();
@@ -143,15 +143,15 @@ export class SuperjobService {
         console.log(error.toString());
     }
 
-    private static buildVacanciesParams(params: VacanciesParams): string | undefined {
+    private static buildVacanciesParams(params: RequestParams): string | undefined {
 
         try {
-            const {catalogue_id, payment_from, payment_to}: VacanciesParams = params;
+            const {catalogue_id, payment_from, payment_to, keywords}: RequestParams = params;
             const vacancies_params: string[] = [];
 
-            if (catalogue_id) {
-                vacancies_params.push(`catalogues=${encodeURIComponent(catalogue_id)}`);
-            }
+            if (keywords) vacancies_params.push(`keywords=${encodeURIComponent(keywords)}`);
+            if (catalogue_id) vacancies_params.push(`catalogues=${encodeURIComponent(catalogue_id)}`);
+
 
             if (payment_from || payment_to) {
                 let order_url: string = "order_field=payment&order_direction=asc&no_agreement=1&";
