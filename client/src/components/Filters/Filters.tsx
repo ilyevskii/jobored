@@ -1,14 +1,18 @@
 import './Filters.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {NumberInput, Select, Button} from '@mantine/core';
 import {IconChevronDown} from '@tabler/icons-react';
 import {useForm} from '@mantine/form';
 
-import {useCatalogues} from "hooks";
+import {useCatalogues, useRequestParams, useVacancies} from "hooks";
 
 
 export function Filters() {
+
+    const {setFiltersParams} = useRequestParams();
+    const {refresh_vacancies} = useVacancies();
+    const {catalogues, is_catalogues_loading} = useCatalogues();
 
     const filters_form = useForm(
         {initialValues: {
@@ -20,13 +24,17 @@ export function Filters() {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
+        await refresh_vacancies();
     }
 
     const handleReset = (): void => {
         filters_form.reset();
     }
 
-    const {catalogues, is_catalogues_loading, refresh_catalogues} = useCatalogues();
+    useEffect(() => {
+        setFiltersParams(filters_form.values);
+    }, [filters_form.values])
+
 
     return (
         <div className="filters-container">
