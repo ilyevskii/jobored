@@ -42,10 +42,11 @@ export function Searchbar() {
                 {...searchbar_form.getInputProps('keywords')}
                 rightSection={
                     searchbar_form.values['keywords'].length ?
-                        <IconTrashX className="reset-btn" onClick={handleReset}/>
+                        <div className="reset-btn" onClick={handleReset}>×</div>
                         :
                         <></>
                 }
+                styles={{rightSection: { width: 'auto' }}}
             />
             <Button type="submit" className="submit-btn search-btn">
                 Поиск
