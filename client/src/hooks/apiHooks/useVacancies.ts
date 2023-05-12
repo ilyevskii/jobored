@@ -1,7 +1,7 @@
 import {useQuery} from "react-query";
 import {SuperjobService, Vacancy} from "services";
 
-import {useRequestParams} from "./useRequestParams";
+import {useRequestParams} from "hooks";
 
 
 export const useVacancies = () => {

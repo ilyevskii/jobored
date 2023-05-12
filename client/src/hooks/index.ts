@@ -1,4 +1,4 @@
-export {useCatalogues} from "./useCatalogues";
-export {useVacancies} from "./useVacancies";
+export {useCatalogues} from "./apiHooks/useCatalogues";
+export {useVacancies} from "./apiHooks/useVacancies";
 
-export {useRequestParams} from "./useRequestParams";
+export {useRequestParams} from "./storeHooks/useRequestParams";
