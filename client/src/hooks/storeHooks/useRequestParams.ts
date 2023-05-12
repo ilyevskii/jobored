@@ -26,8 +26,8 @@ export function useRequestParams(): requestParamsHook {
 
     const setFiltersParams = (params: FiltersParams): void => {
         if (params.catalogue_id !== catalogue_id) dispatch(updateCatalogueId(params.catalogue_id));
-        if (params.payment_from !== catalogue_id) dispatch(updatePaymentFrom(params.payment_from));
-        if (params.payment_to !== catalogue_id) dispatch(updatePaymentTo(payment_to));
+        if (params.payment_from !== payment_from) dispatch(updatePaymentFrom(params.payment_from));
+        if (params.payment_to !== payment_to) dispatch(updatePaymentTo(params.payment_to));
     }
 
     const setSearchBarParams = (params: SearchbarParams): void => {
