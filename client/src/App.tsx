@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Header, Filters, Searchbar} from "components";
+import {Header, Filters, Searchbar, VacanciesList} from "components";
 
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
               <Filters/>
               <main>
                   <Searchbar/>
+                  <VacanciesList/>
               </main>
           </div>
       </>

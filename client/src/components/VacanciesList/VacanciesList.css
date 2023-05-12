@@ -1,0 +1,22 @@
+.vacancies-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 16px;
+    margin: 16px 0 40px 0;
+}
+
+.vacancy {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: var(--white);
+    padding: 25px;
+}
+
+.vacancy-info {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
