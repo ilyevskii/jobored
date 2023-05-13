@@ -2,8 +2,6 @@ import {useQuery} from "react-query";
 import {SuperjobService, Vacancy} from "services";
 
 import {useRequestParams} from "hooks";
-import {useRef} from "react";
-
 
 export const useVacancies = () => {
 
@@ -12,6 +10,9 @@ export const useVacancies = () => {
     const {data,  isLoading, isFetching, isError, error, refetch} = useQuery<Vacancy[] | undefined, Error>(['vacancies'],
         async () => {
             return await SuperjobService.getVacancies(getActualRequestParams());
+        },
+        {
+            enabled: false
         });
 
     return {
