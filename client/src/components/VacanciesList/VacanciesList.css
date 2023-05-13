@@ -33,7 +33,6 @@
 .vacancy-profession {
     color: var(--blue-main-500);
     font-size: 20px;
-    font-weight: 600;
 }
 
 .vacancy-town {
@@ -43,14 +42,13 @@
     gap: 8px;
 }
 
-.vacancy-salary span {
-    font-weight: 600;
-}
-
 .vacancy-info-separator {
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    color: var(--grey-600);
     padding: 0 10px;
 }
 
-.save-btn {
-    color: var(--blue-main-500);
+.make-starred-btn:hover {
+    cursor: pointer;
 }
