@@ -2,7 +2,6 @@ import './Filters.css';
 import React, {useEffect} from 'react';
 
 import {NumberInput, Select, Button} from '@mantine/core';
-import {IconChevronDown} from '@tabler/icons-react';
 import {useForm} from '@mantine/form';
 
 import {useCatalogues, useRequestParams, useVacancies} from "hooks";
@@ -40,7 +39,7 @@ export function Filters() {
         <div className="filters-container">
             <div className="filters-topbar">
                 <h2 className="filters-header">Фильтры</h2>
-                <button onClick={handleReset} className="reset-button">Сбросить все ×</button>
+                <button onClick={handleReset} className="reset-button">Сбросить все &times;</button>
             </div>
             {!is_catalogues_loading ?
                 <form onSubmit={handleSubmit} className="filters-form">
@@ -48,9 +47,9 @@ export function Filters() {
                         label="Отрасль"
                         placeholder="Выберите отрасль"
                         data={catalogues}
-                        rightSection={<IconChevronDown size="20px" color="var(--grey-500)"/>}
+                        rightSection={<img src={`${process.env.PUBLIC_URL}/images/expand.png`} alt="categories"/>}
                         rightSectionWidth={30}
-                        styles={{rightSection: { pointerEvents: 'none' }}}
+                        styles={{rightSection: { pointerEvents: 'none', paddingRight: '17px' }}}
                         {...filters_form.getInputProps('catalogue_id')}
                     />
                     <div className="salary-range">

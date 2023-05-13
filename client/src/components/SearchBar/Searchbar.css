@@ -42,7 +42,7 @@
 
 .reset-btn {
     font-size: 25px;
-    color: var(--grey-300);
+    color: var(--grey-400);
     transition: 0.25s ease;
     background: none;
 }
