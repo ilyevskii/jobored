@@ -6,6 +6,7 @@
   --white: #FFFFFF;
   --grey-600: #7B7C88;
   --grey-500: #ACADB9;
+  --grey-400: #C6C7D3;
   --grey-300: #D5D6DC;
   --grey-200: #EAEBED;
   --grey-100: #F5F5F6;
@@ -28,6 +29,22 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
 
 .container {
   display: flex;
