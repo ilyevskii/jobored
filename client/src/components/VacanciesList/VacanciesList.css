@@ -6,6 +6,10 @@
     margin: 16px 0 40px 0;
 }
 
+.vacancies-list.favorite {
+    padding: 0 200px;
+}
+
 .loader-container {
     display: flex;
     height: 100%;

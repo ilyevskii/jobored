@@ -15,8 +15,8 @@ export function VacanciesList() {
 
     useEffect(() => {
         refresh_vacancies();
-    }, [current_page])
 
+    }, [current_page, refresh_vacancies])
 
     return (
         <>
