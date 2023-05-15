@@ -10,9 +10,7 @@ export interface Vacancy {
     firm_name: string;
     town: string;
     type_of_work: string;
-    payment_to: string;
-    payment_from: string;
-    currency: string;
+    salary: string;
 }
 
 export interface FiltersParams {

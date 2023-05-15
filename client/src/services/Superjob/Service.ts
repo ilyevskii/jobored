@@ -175,15 +175,22 @@ export class SuperjobService {
     }
 
     private static transformVacancy(vacancy: any): Vacancy {
+
+        const salary = vacancy.payment_to && vacancy.payment_from ?
+                            `${vacancy.payment_from} - ${vacancy.payment_to} ${vacancy.currency}` :
+                       vacancy.payment_to ?
+                            `до ${vacancy.payment_to} ${vacancy.currency}` :
+                       vacancy.payment_from ?
+                            `от ${vacancy.payment_from} ${vacancy.currency}` :
+                            "по договорённости";
+
         return {
             id: vacancy.id,
             profession: vacancy.profession,
             firm_name: vacancy.firm_name,
             town: vacancy.town.title,
             type_of_work: vacancy.type_of_work.title,
-            payment_to: vacancy.payment_to,
-            payment_from: vacancy.payment_from,
-            currency: vacancy.currency
+            salary: salary
         }
     }
 }
