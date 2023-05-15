@@ -23,7 +23,7 @@ export function useRequestParams(): requestParamsHook {
     const payment_from: string = useSelector((state: RootState) => state.request_params.payment_from);
     const payment_to: string = useSelector((state: RootState) => state.request_params.payment_to);
     const keywords: string = useSelector((state: RootState) => state.request_params.keywords);
-    const currentPage: number = useSelector((state: RootState) => state.pagination.currentPage);
+    const currentPage: number = useSelector((state: RootState) => state.pagination.current_page);
 
     const setFiltersParams = (params: FiltersParams): void => {
         if (params.catalogue_id !== catalogue_id) dispatch(updateCatalogueId(params.catalogue_id));

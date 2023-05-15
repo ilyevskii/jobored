@@ -1,10 +1,18 @@
+import {useSelector, useDispatch} from "react-redux";
+import {Dispatch, useEffect} from "react";
+import {AnyAction} from "redux";
+
 import {Vacancy} from "services";
-import {useEffect, useState} from "react";
+import {RootState, updateFavoriteVacancies} from "store";
 
 export const useFavoriteVacancies = () => {
 
-    const [favorite_vacancies, setFavoriteVacancies] =
-    );
+    const dispatch: Dispatch<AnyAction> = useDispatch();
+    const favorite_vacancies: Vacancy[] = useSelector((state: RootState) => state.favorite_vacancies.favorite_vacancies);
+
+    const setFavoriteVacancies = (vacancies: Vacancy[]) => {
+        dispatch(updateFavoriteVacancies(vacancies));
+    }
 
     useEffect(() => {
         localStorage.setItem('favorite_vacancies', JSON.stringify(favorite_vacancies));
@@ -13,10 +21,10 @@ export const useFavoriteVacancies = () => {
     const toggleFavoriteVacancy = (vacancy: Vacancy): void => {
 
         if (!isFavorite(vacancy)) {
-            setFavoriteVacancies(state => [...state, vacancy]);
+            setFavoriteVacancies([...favorite_vacancies, vacancy]);
         }
         else {
-            setFavoriteVacancies(state => state.filter((favorite: Vacancy) => {
+            setFavoriteVacancies(favorite_vacancies.filter((favorite: Vacancy) => {
                                             return favorite.id !== vacancy.id
                                           })
             );
@@ -28,10 +36,16 @@ export const useFavoriteVacancies = () => {
         return favorite_vacancies.some((favorite) => favorite.id === vacancy.id);
     }
 
+    const getCurrentPageContent = (page: number): Vacancy[] => {
+        page -= 1;
+        return favorite_vacancies.slice(page * 4, Math.min(page * 4 + 4, favorite_vacancies.length));
+    }
+
 
     return {
         toggleFavoriteVacancy,
         favorite_vacancies,
+        getCurrentPageContent,
         isFavorite
     }
 };
