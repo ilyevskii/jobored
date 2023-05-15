@@ -3,5 +3,6 @@ export {useVacancies} from "./apiHooks/useVacancies";
 
 export {useRequestParams} from "./storeHooks/useRequestParams";
 export {usePaginationParams} from "./storeHooks/usePaginationParams";
+export {useMenuItems} from "./storeHooks/useMenuItems";
 
 export {useFavoriteVacancies} from "./localStorageHooks/useFavoriteVacancies";
