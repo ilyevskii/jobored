@@ -33,7 +33,7 @@ export function VacanciesList() {
                                         <div className="vacancy-info">
                                             <h3 className="vacancy-profession bold">{vacancy.profession}</h3>
                                             <p className="vacancy-salary">
-                                                <span className="bold">з/п {vacancy.payment_from} {vacancy.currency}</span>
+                                                <span className="bold">з/п {vacancy.salary}</span>
                                                 <span className="vacancy-info-separator">•</span>
                                                 <span>Полный рабочий день</span>
                                             </p>
