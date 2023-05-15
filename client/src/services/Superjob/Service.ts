@@ -92,7 +92,7 @@ export class SuperjobService {
         }
     }
 
-    static async getVacancies(params: RequestParams): Promise<Vacancy[] | undefined> {
+    static async getVacancies(params: RequestParams): Promise<any[] | undefined> {
 
         try {
             if (!this.access_token) await this.authorize();
@@ -105,8 +105,7 @@ export class SuperjobService {
                         "Authorization": `Bearer ${this.access_token}`
                     }
                 });
-
-            return response.data.objects.map((vacancy: any) => this.transformVacancy(vacancy));
+            return [response.data.total, response.data.objects.map((vacancy: any) => this.transformVacancy(vacancy))];
         }
         catch (err) {
             await this.handleError(err);
@@ -146,12 +145,11 @@ export class SuperjobService {
     private static buildVacanciesParams(params: RequestParams): string | undefined {
 
         try {
-            const {catalogue_id, payment_from, payment_to, keywords}: RequestParams = params;
-            const vacancies_params: string[] = [];
+            const {catalogue_id, payment_from, payment_to, keywords, currentPage}: RequestParams = params;
+            const vacancies_params: string[] = [`page=${currentPage}&count=4&published=1`];
 
             if (keywords) vacancies_params.push(`keywords=${encodeURIComponent(keywords)}`);
             if (catalogue_id) vacancies_params.push(`catalogues=${encodeURIComponent(catalogue_id)}`);
-
 
             if (payment_from || payment_to) {
                 let order_url: string = "order_field=payment&order_direction=asc&no_agreement=1&";

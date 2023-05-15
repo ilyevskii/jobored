@@ -30,4 +30,5 @@ export interface RequestParams {
     payment_from: string;
     payment_to: string;
     keywords: string;
+    currentPage: number;
 }
