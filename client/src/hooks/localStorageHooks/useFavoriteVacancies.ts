@@ -8,7 +8,6 @@ export const useFavoriteVacancies = () => {
             JSON.parse(localStorage.getItem("favorite_vacancies")!) : new Array<Vacancy>
     );
 
-
     const toggleFavoriteVacancy = (vacancy: Vacancy): void => {
 
         let new_vacancies = [...favorite_vacancies];
@@ -36,6 +35,7 @@ export const useFavoriteVacancies = () => {
 
         return false;
     }
+
 
     return {
         toggleFavoriteVacancy,
