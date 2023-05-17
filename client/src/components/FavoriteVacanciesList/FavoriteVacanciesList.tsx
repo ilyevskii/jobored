@@ -19,7 +19,7 @@ export function FavoriteVacanciesList() {
         <>
             {vacancies.length ?
                 <>
-                    <ul className="vacancies-list favorite">
+                    <ul className="vacancies-list">
                         {vacancies!.map((vacancy: Vacancy) => (
                             <VacancyItem vacancy={vacancy}/>
                         ))}

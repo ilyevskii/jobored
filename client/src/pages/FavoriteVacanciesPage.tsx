@@ -13,10 +13,8 @@ export function FavoriteVacanciesPage() {
 
 
     return (
-        <div className="container">
-            <main>
+        <main className="container narrow">
             <FavoriteVacanciesList/>
-            </main>
-        </div>
+        </main>
     );
 }
