@@ -1,8 +1,8 @@
 import './VacancyItem.css';
 import React from 'react';
 
-import {useFavoriteVacancies} from "hooks";
 import {Vacancy} from "services";
+import {StarButton} from "../../StarButton/StarButton";
 
 interface VacancyItemProps {
     vacancy: Vacancy;
@@ -11,14 +11,15 @@ interface VacancyItemProps {
 
 export function VacancyItem(props: VacancyItemProps) {
 
-    const {toggleFavoriteVacancy, isFavorite} = useFavoriteVacancies();
     const {vacancy} = props;
 
 
     return (
         <li className="vacancy-item" key={vacancy.id}>
             <div className="vacancy-info">
-                <h3 className="vacancy-profession bold">{vacancy.profession}</h3>
+                <h3 className="vacancy-profession bold">
+                    <a href={`/vacancy/${vacancy.id}`}>{vacancy.profession}</a>
+                </h3>
                 <p className="vacancy-salary">
                     <span className="bold">з/п {vacancy.salary}</span>
                     <span className="vacancy-info-separator">•</span>
@@ -29,14 +30,7 @@ export function VacancyItem(props: VacancyItemProps) {
                     <span>{vacancy.town}</span>
                 </p>
             </div>
-
-            <button className="make-starred-btn" onClick={() => toggleFavoriteVacancy(vacancy)}>
-                {isFavorite(vacancy) ?
-                    <img src={`${process.env.PUBLIC_URL}/images/star_filled.png`} alt="favourite"/>
-                    :
-                    <img src={`${process.env.PUBLIC_URL}/images/star.png`} alt="favourite"/>
-                }
-            </button>
+            <StarButton vacancy={vacancy}/>
         </li>
     );
 }

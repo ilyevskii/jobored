@@ -1,5 +1,7 @@
 .vacancy-item {
     display: flex;
+    width: 100%;
+    min-width: fit-content;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
@@ -39,8 +41,4 @@
     font-weight: 400;
     color: var(--grey-600);
     padding: 0 10px;
-}
-
-.make-starred-btn:hover {
-    cursor: pointer;
 }
