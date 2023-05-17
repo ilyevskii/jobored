@@ -24,6 +24,7 @@ export class SuperjobService {
             const cookie_access_token = cookies.get("access_token")
 
             if (!cookie_access_token) {
+
                 const response = await axios.get(
                     `${this.url}/2.0/oauth2/password/?login=${this.login}&password=${this.password}&client_id=${this.client_id}&client_secret=${this.client_secret}`,
                     {
@@ -126,7 +127,7 @@ export class SuperjobService {
                     }
                 });
 
-            return this.transformVacancy(response.data);
+            return this.transformVacancy(response.data, false);
         }
         catch (err) {
             await this.handleError(err);
@@ -139,7 +140,9 @@ export class SuperjobService {
             await this.refreshAccessToken();
         }
 
-        console.log(error.toString());
+        console.error(error);
+
+        // console.log(error.toString());
     }
 
     private static buildVacanciesParams(params: RequestParams): string | undefined {
@@ -174,7 +177,7 @@ export class SuperjobService {
         }
     }
 
-    private static transformVacancy(vacancy: any): Vacancy {
+    private static transformVacancy(vacancy: any, is_list: boolean = true): Vacancy {
 
         const salary = vacancy.payment_to && vacancy.payment_from ?
                             `${vacancy.payment_from} - ${vacancy.payment_to} ${vacancy.currency}` :
@@ -184,7 +187,7 @@ export class SuperjobService {
                             `от ${vacancy.payment_from} ${vacancy.currency}` :
                             "по договорённости";
 
-        return {
+        const transformed_vacancy: Vacancy = {
             id: vacancy.id,
             profession: vacancy.profession,
             firm_name: vacancy.firm_name,
@@ -192,5 +195,9 @@ export class SuperjobService {
             type_of_work: vacancy.type_of_work.title,
             salary: salary
         }
+
+        if (!is_list) transformed_vacancy.text = vacancy.vacancyRichText;
+
+        return transformed_vacancy;
     }
 }

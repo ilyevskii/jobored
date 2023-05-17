@@ -11,6 +11,7 @@ export interface Vacancy {
     town: string;
     type_of_work: string;
     salary: string;
+    text?: string;
 }
 
 export interface FiltersParams {
