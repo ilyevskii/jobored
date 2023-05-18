@@ -1,4 +1,4 @@
-import './Filters.css';
+import './Filters.scss';
 import React, {useEffect} from 'react';
 
 import {NumberInput, Select, Button} from '@mantine/core';
@@ -38,7 +38,7 @@ export function Filters() {
     return (
         <div className="filters-container">
             <div className="filters-topbar">
-                <h2 className="filters-header">Фильтры</h2>
+                <h2 className="filters-header semi-bold">Фильтры</h2>
                 <button onClick={handleReset} className="reset-button">Сбросить все &times;</button>
             </div>
             <form onSubmit={handleSubmit} className="filters-form">

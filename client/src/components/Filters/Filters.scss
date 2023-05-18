@@ -1,0 +1,95 @@
+@import "../../utilities";
+
+.filters-form {
+    @include flex-column(20px);
+    width: 100%;
+}
+
+.filters-container {
+    @include flex-column(32px);
+    @include border(var(--grey-200), 12px);
+    align-items: flex-start;
+    min-width: 315px;
+    height: fit-content;
+    padding: 20px;
+    background: var(--white);
+
+    input {
+        @include border(var(--grey-300), 8px);
+        height: 42px;
+        background: var(--white);
+        padding: 8px 12px;
+        transition: 0.2s ease;
+
+        &:hover {
+            border: 1px solid var(--grey-500);
+        }
+
+        &:focus {
+            border: 1px solid var(--blue-main-500);
+        }
+    }
+
+    label {
+        color: var(--black);
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
+
+.filters-topbar {
+    @include flex-row();
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .filters-header {
+        font-size: 20px;
+        color: var(--black);
+    }
+
+    .reset-button {
+        font-weight: 500;
+        font-size: 14px;
+        background-color: var(--white);
+        color: var(--grey-500);
+        transition: 0.25s ease;
+
+        &:hover {
+            cursor: pointer;
+            color: var(--grey-600);
+        }
+    }
+}
+
+.salary-range {
+    @include flex-column(8px);
+}
+
+.salary-input-control {
+    @include border(none, 10px);
+    color: var(--grey-500);
+
+    .up {
+        align-items: flex-end;
+    }
+
+    .down {
+        align-items: flex-start;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.submit-btn {
+    @include border(none, 8px);
+    background: var(--blue-main-500);
+    font-weight: 500;
+    transition: 0.25s ease;
+
+    &:hover {
+        background: var(--blue-600);
+    }
+}
