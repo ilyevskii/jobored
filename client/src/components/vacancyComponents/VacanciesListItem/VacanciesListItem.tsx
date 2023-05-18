@@ -1,4 +1,4 @@
-import './VacancyItem.css';
+import './VacanciesListItem.css';
 import React from 'react';
 
 import {Vacancy} from "services";
@@ -9,7 +9,7 @@ interface VacancyItemProps {
 }
 
 
-export function VacancyItem(props: VacancyItemProps) {
+export function VacanciesListItem(props: VacancyItemProps) {
 
     const {vacancy} = props;
 

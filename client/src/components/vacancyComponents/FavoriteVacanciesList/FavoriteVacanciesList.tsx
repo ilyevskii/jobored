@@ -2,7 +2,7 @@ import './FavoriteVacanciesList.css';
 import React from 'react';
 
 import {useFavoriteVacancies, usePaginationParams} from "hooks";
-import {VacancyItem} from "components";
+import {VacanciesListItem} from "components";
 import {Vacancy} from "services";
 
 import {Pagination} from "@mantine/core";
@@ -21,7 +21,7 @@ export function FavoriteVacanciesList() {
                 <>
                     <ul className="vacancies-list">
                         {vacancies!.map((vacancy: Vacancy) => (
-                            <VacancyItem vacancy={vacancy}/>
+                            <VacanciesListItem vacancy={vacancy}/>
                         ))}
                     </ul>
                     <Pagination
