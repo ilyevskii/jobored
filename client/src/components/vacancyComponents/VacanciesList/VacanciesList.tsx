@@ -1,28 +1,33 @@
 import './VacanciesList.css';
 import React, {useEffect} from 'react';
 
+import {Navigate} from 'react-router-dom';
+import {Pagination, Loader} from "@mantine/core";
+
 import {useVacancies, usePaginationParams} from "hooks";
 import {VacanciesListItem} from "components";
 import {Vacancy} from "services";
-
-import {Pagination, Loader} from "@mantine/core";
 
 
 export function VacanciesList() {
 
     const {vacancies, isVacanciesLoading, refresh_vacancies} = useVacancies();
-    const {current_page, total_page_amount, setCurrentPage} = usePaginationParams()
+    const {current_page, total_page_amount, setCurrentPage} = usePaginationParams();
 
     useEffect(() => {
         refresh_vacancies();
-
     }, [current_page, refresh_vacancies])
+
+    useEffect(() => {
+        console.log(vacancies)
+        console.log(isVacanciesLoading)
+    })
 
     return (
         <>
-            {!isVacanciesLoading ?
+            {!isVacanciesLoading && vacancies ?
                 <>
-                    {vacancies && vacancies.length ?
+                    {vacancies.length ?
                         <>
                             <ul className="vacancies-list">
                                 {vacancies!.map((vacancy: Vacancy) => (
@@ -36,9 +41,9 @@ export function VacanciesList() {
                                 value={current_page}/>
                         </>
                         :
-                        <div>
-                            No results.
-                        </div>
+                        <>
+                            <Navigate to={"/empty"}/>
+                        </>
                     }
                 </>
                 :

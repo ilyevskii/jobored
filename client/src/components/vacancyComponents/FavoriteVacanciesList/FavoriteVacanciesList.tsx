@@ -6,6 +6,7 @@ import {VacanciesListItem} from "components";
 import {Vacancy} from "services";
 
 import {Pagination} from "@mantine/core";
+import {Navigate} from "react-router-dom";
 
 
 export function FavoriteVacanciesList() {
@@ -32,9 +33,7 @@ export function FavoriteVacanciesList() {
                     />
                 </>
                 :
-                <div>
-                    No results.
-                </div>
+                <Navigate to={"/empty"}/>
             }
         </>
     );
