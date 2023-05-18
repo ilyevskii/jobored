@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
-import {Header} from "components";
-import {VacanciesPage} from "pages";
+import {Header, VacancyInfo} from "components";
+import {VacanciesPage, FavoriteVacanciesPage} from "pages";
 
 
 function App() {
@@ -12,6 +12,8 @@ function App() {
           <Header/>
           <Routes>
               <Route path="/" element={<VacanciesPage/>}/>
+              <Route path="/favorites" element={<FavoriteVacanciesPage/>}/>
+              <Route path="/vacancy/:id" element={<VacancyInfo/>}/>
           </Routes>
       </Router>
   );

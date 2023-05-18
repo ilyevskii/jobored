@@ -1,0 +1,14 @@
+.vacancy-profession.single {
+    font-size: 28px;
+    color: var(--black);
+}
+
+.vacancy-salary.single {
+    font-size: 20px;
+}
+
+.vacancy-info-point {
+    padding-top: 4px;
+    font-size: 20px;
+    color: var(--black);
+}
