@@ -1,4 +1,4 @@
-import './Header.css';
+import './Header.scss';
 import React from 'react';
 
 import {useMenuItems} from "hooks";
@@ -14,8 +14,9 @@ export function Header() {
         navigate("/");
     }
 
+
     return (
-        <header className="main-header">
+        <header className="site-header">
             <div className="logo" onClick={handleLogoClick}>
                 <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="logo"/>
                 <h1 className="logo-text">Jobored</h1>
