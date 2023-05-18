@@ -1,4 +1,4 @@
-import './StarButton.css';
+import './StarButton.scss';
 import React from "react";
 
 import {useFavoriteVacancies} from "hooks";
@@ -16,7 +16,7 @@ export function StarButton(props: StarButtonProps) {
 
 
     return (
-        <button className="make-starred-btn" onClick={() => toggleFavoriteVacancy(vacancy)}>
+        <button className="star-btn" onClick={() => toggleFavoriteVacancy(vacancy)}>
             {isFavorite(vacancy) ?
                 <img src={`${process.env.PUBLIC_URL}/images/star_filled.png`} alt="favourite"/>
                 :
