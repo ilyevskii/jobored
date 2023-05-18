@@ -1,4 +1,4 @@
-.vacancy-item {
+.vacancy-container {
     display: flex;
     width: 100%;
     min-width: fit-content;
@@ -10,6 +10,15 @@
     border-radius: 12px;
     background-color: var(--white);
     padding: 25px;
+}
+
+.vacancy-container.info-text {
+    flex-direction: column;
+    gap: 16px;
+}
+
+.vacancy-container.info-text ul {
+    padding-left: 20px;
 }
 
 .vacancy-info {

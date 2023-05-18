@@ -15,7 +15,7 @@ export function VacancyItem(props: VacancyItemProps) {
 
 
     return (
-        <li className="vacancy-item" key={vacancy.id}>
+        <li className="vacancy-container" key={vacancy.id}>
             <div className="vacancy-info">
                 <h3 className="vacancy-profession bold">
                     <a href={`/vacancy/${vacancy.id}`}>{vacancy.profession}</a>
