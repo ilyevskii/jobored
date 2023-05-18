@@ -1,0 +1,46 @@
+@import "../../utilities";
+
+.searchbar-form {
+    @include flex-row(10px);
+    @include border(var(--grey-200), 8px);
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+    padding: 8px 12px 8px 2px;
+    transition: 0.15s ease;
+
+    &:hover {
+        border: 1px solid var(--grey-300);
+    }
+
+    &:focus-within {
+        border: 1px solid var(--blue-600);
+    }
+
+    button {
+        width: 85px;
+        height: 32px;
+    }
+}
+
+.searchbar-input-wrapper {
+    width: 100%;
+
+    input {
+        background-color: var(--white);
+        border: none;
+        padding-right: 22.5px;
+    }
+}
+
+.reset-btn {
+    font-size: 25px;
+    color: var(--grey-400);
+    background: none;
+    transition: 0.25s ease;
+
+    &:hover {
+        cursor: pointer;
+        color: var(--grey-500);
+    }
+}
