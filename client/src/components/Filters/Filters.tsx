@@ -41,47 +41,43 @@ export function Filters() {
                 <h2 className="filters-header">Фильтры</h2>
                 <button onClick={handleReset} className="reset-button">Сбросить все &times;</button>
             </div>
-            {!is_catalogues_loading ?
-                <form onSubmit={handleSubmit} className="filters-form">
-                    <Select
-                        label="Отрасль"
-                        placeholder="Выберите отрасль"
-                        data={catalogues}
-                        rightSection={<img src={`${process.env.PUBLIC_URL}/images/expand.png`} alt="categories"/>}
-                        rightSectionWidth={30}
-                        styles={{rightSection: { pointerEvents: 'none', paddingRight: '17px' }}}
-                        {...filters_form.getInputProps('catalogue_id')}
+            <form onSubmit={handleSubmit} className="filters-form">
+                <Select
+                    label="Отрасль"
+                    placeholder="Выберите отрасль"
+                    data={!is_catalogues_loading ? catalogues: [{value: 'Loading', label: 'Загрузка...'}]}
+                    rightSection={<img src={`${process.env.PUBLIC_URL}/images/expand.png`} alt="categories"/>}
+                    rightSectionWidth={30}
+                    styles={{rightSection: { pointerEvents: 'none', paddingRight: '17px' }}}
+                    {...filters_form.getInputProps('catalogue_id')}
+                />
+                <div className="salary-range">
+                    <NumberInput
+                        label="Оклад"
+                        placeholder="От"
+                        step={1000}
+                        min={0}
+                        classNames={{
+                            controlUp: 'salary-input-control up',
+                            controlDown: 'salary-input-control down'
+                        }}
+                        {...filters_form.getInputProps('payment_from')}
                     />
-                    <div className="salary-range">
-                        <NumberInput
-                            label="Оклад"
-                            placeholder="От"
-                            step={1000}
-                            min={0}
-                            classNames={{
-                                controlUp: 'salary-input-control up',
-                                controlDown: 'salary-input-control down'
-                            }}
-                            {...filters_form.getInputProps('payment_from')}
-                        />
-                        <NumberInput
-                            placeholder="До"
-                            step={1000}
-                            min={0}
-                            classNames={{
-                                controlUp: 'salary-input-control up',
-                                controlDown: 'salary-input-control down'
-                            }}
-                            {...filters_form.getInputProps('payment_to')}
-                        />
-                    </div>
-                    <Button type="submit" className="submit-btn">
-                        Применить
-                    </Button>
-                </form>
-                :
-                <div>Loading...</div>
-            }
+                    <NumberInput
+                        placeholder="До"
+                        step={1000}
+                        min={0}
+                        classNames={{
+                            controlUp: 'salary-input-control up',
+                            controlDown: 'salary-input-control down'
+                        }}
+                        {...filters_form.getInputProps('payment_to')}
+                    />
+                </div>
+                <Button type="submit" className="submit-btn">
+                    Применить
+                </Button>
+            </form>
         </div>
     );
 }
