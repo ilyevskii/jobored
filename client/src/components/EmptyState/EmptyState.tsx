@@ -1,6 +1,8 @@
-import './EmptyState.css';
+import './EmptyState.scss';
 import React from 'react';
+
 import {useNavigate} from "react-router-dom";
+
 
 export function EmptyState() {
 
@@ -10,11 +12,12 @@ export function EmptyState() {
         navigate("/");
     }
 
+
     return (
         <main className="empty-state-container">
-            <img src={`${process.env.PUBLIC_URL}/images/empty.png`} alt="logo"/>
-            <p className="empty-state-text semi-bold">Упс, здесь еще ничего нет!</p>
-            <button className="empty-state-btn" onClick={handleFindVacanciesClick}>Поиск Вакансий</button>
+            <img src={`${process.env.PUBLIC_URL}/images/empty.png`} alt="empty page"/>
+            <p className="alert-text semi-bold">Упс, здесь еще ничего нет!</p>
+            <button className="redirect-btn bold" onClick={handleFindVacanciesClick}>Поиск Вакансий</button>
         </main>
     );
 }
