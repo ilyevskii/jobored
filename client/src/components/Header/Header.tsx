@@ -1,16 +1,22 @@
 import './Header.css';
 import React from 'react';
 
-import {useMenuItems} from "../../hooks";
+import {useMenuItems} from "hooks";
+import {useNavigate} from "react-router-dom";
 
 
 export function Header() {
 
     const {current_menu_item} = useMenuItems();
+    const navigate = useNavigate();
+
+    const handleLogoClick = () => {
+        navigate("/");
+    }
 
     return (
         <header className="main-header">
-            <div className="logo">
+            <div className="logo" onClick={handleLogoClick}>
                 <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="logo"/>
                 <h1 className="logo-text">Jobored</h1>
             </div>
