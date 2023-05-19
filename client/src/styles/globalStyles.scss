@@ -1,0 +1,53 @@
+@import "utilities";
+
+body {
+  background: #F5F5F5;
+  font-family: Inter, sans-serif;
+}
+
+main {
+  position: relative;
+  flex-grow: 1;
+}
+
+.container {
+  @include flex-row(30px);
+  justify-content: space-between;
+  height: 100%;
+  margin: 30px 235px;
+
+  &.narrow {
+    @include flex-column(20px);
+    margin: 30px 375px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 576px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    max-width: 916px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+    max-width: 1116px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .container {
+    max-width: 100%;
+  }
+}
