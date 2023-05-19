@@ -62,7 +62,7 @@ export function VacancyInfo() {
 
     return (
         <main className="container narrow">
-            {!is_vacancy_loading && false ?
+            {!is_vacancy_loading ?
                 <>
                     <div className="vacancy-container">
                         <div className="vacancy-info">
