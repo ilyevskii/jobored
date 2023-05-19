@@ -2,7 +2,7 @@ import './VacanciesListItem.scss';
 import React from 'react';
 
 import {Vacancy} from "services";
-import {StarButton} from "../../StarButton/StarButton";
+import {StarButton} from "components";
 
 interface VacancyItemProps {
     vacancy: Vacancy;
