@@ -2,19 +2,19 @@
 
 .searchbar-form {
     @include flex-row(10px);
-    @include border(var(--grey-200), 8px);
+    @include border($grey-200, 8px);
     justify-content: space-between;
     align-items: center;
-    background: var(--white);
+    background: $white;
     padding: 8px 12px 8px 2px;
     transition: 0.15s ease;
 
     &:hover {
-        border: 1px solid var(--grey-300);
+        border: 1px solid $grey-300;
     }
 
     &:focus-within {
-        border: 1px solid var(--blue-600);
+        border: 1px solid $blue-600;
     }
 
     button {
@@ -27,7 +27,7 @@
     width: 100%;
 
     input {
-        background-color: var(--white);
+        background-color: $white;
         border: none;
         padding-right: 22.5px;
     }
@@ -35,12 +35,12 @@
 
 .reset-btn {
     font-size: 25px;
-    color: var(--grey-400);
+    color: $grey-400;
     background: none;
     transition: 0.25s ease;
 
     &:hover {
         cursor: pointer;
-        color: var(--grey-500);
+        color: $grey-500;
     }
 }

@@ -8,12 +8,12 @@
 
 .vacancy-container {
   @include flex-row(90px);
-  @include border(var(--grey-200), 12px);
+  @include border($grey-200, 12px);
   justify-content: space-between;
   align-items: flex-start;
   min-width: fit-content;
   width: 100%;
-  background-color: var(--white);
+  background-color: $white;
   padding: 25px;
 
   &.info {
@@ -29,18 +29,18 @@
   @include flex-column(13px);
 
   p {
-    color: var(--black);
+    color: $black;
     font-size: 16px;
   }
 }
 
 .vacancy-profession {
-  color: var(--blue-main-500);
+  color: $blue-main-500;
   font-size: 20px;
 
   .single {
     font-size: 28px;
-    color: var(--black);
+    color: $black;
   }
 }
 
@@ -59,7 +59,7 @@
 
 .vacancy-info-separator {
   font-family: Poppins, sans-serif;
-  color: var(--grey-600);
+  color: $grey-600;
   padding: 0 10px;
 }
 

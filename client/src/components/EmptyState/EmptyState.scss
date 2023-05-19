@@ -9,21 +9,21 @@
 
 .alert-text {
     font-size: 24px;
-    color: var(--grey-900);
+    color: $grey-900;
 }
 
 .redirect-btn {
     @include border(none, 8px);
     font-size: 14px;
     font-family: Open Sans, sans-serif;
-    color: var(--blue-600);
-    background-color: var(--blue-100);
+    color: $blue-600;
+    background-color: $blue-100;
     padding: 10px 24px;
     margin-top: 10px;
     transition: 0.25s ease;
 
     &:hover {
         cursor: pointer;
-        background-color: var(--blue-200);
+        background-color: $blue-200;
     }
 }
