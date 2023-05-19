@@ -1,2 +1,6 @@
-export {SuperjobService} from "./Superjob/Service";
-export {type Vacancy, type Catalogue, type FiltersParams, type SearchbarParams, type RequestParams} from "./Superjob/Types";
+export {CategoriesService} from "./apiServices/CategoriesService";
+export {VacanciesService} from "./apiServices/VacanciesService";
+
+export {HtmlParserService} from "./utilityServices/HtmlParserService";
+
+export {type RequestParams, type Vacancy, type Category, type ResultData} from "./apiServices/Types";
