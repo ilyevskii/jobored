@@ -2,9 +2,9 @@ import {useQuery} from "react-query";
 import {CategoriesService, Category, ResultData} from "services";
 
 
-export const useCatalogues = () => {
+export const useCategories = () => {
 
-    const {data, isLoading, isError, error, refetch} = useQuery<Category[] | undefined, Error>(['categories'],
+    const {data, isLoading, isError, error} = useQuery<Category[] | undefined, Error>(['categories'],
         async () => {
             const result: ResultData = await CategoriesService.getCategories();
 
@@ -12,17 +12,16 @@ export const useCatalogues = () => {
                 return result.data;
             }
             else {
-                throw result.data;
+                throw new Error(JSON.stringify(result.data));
             }
         });
 
 
     return {
-        catalogues: data!,
-        is_catalogues_loading: isLoading,
-        is_catalogues_error: isError,
-        vacancies_error: error,
-        refresh_catalogues: refetch,
+        categories: data!,
+        isCategoriesLoading: isLoading,
+        isCategoriesError: isError,
+        categoriesError: error
     };
 
 };
