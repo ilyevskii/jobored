@@ -4,14 +4,15 @@ import React, {useEffect} from 'react';
 import {NumberInput, Select, Button} from '@mantine/core';
 import {useForm} from '@mantine/form';
 
-import {useCatalogues, useRequestParams, useVacancies} from "hooks";
+import {useCategories, useRequestParams, useVacancies} from "hooks";
+import {Navigate} from "react-router-dom";
 
 
 export function Filters() {
 
     const {setFiltersParams} = useRequestParams();
     const {refresh_vacancies} = useVacancies();
-    const {catalogues, is_catalogues_loading} = useCatalogues();
+    const {categories, isCategoriesLoading, isCategoriesError} = useCategories();
 
     const filters_form = useForm(
         {initialValues: {
@@ -37,6 +38,8 @@ export function Filters() {
 
     return (
         <div className="filters-container">
+            {isCategoriesError && <Navigate to="/error"/>}
+
             <div className="filters-topbar">
                 <h2 className="filters-header semi-bold">Фильтры</h2>
                 <button onClick={handleReset} className="reset-button">Сбросить все &times;</button>
@@ -45,7 +48,7 @@ export function Filters() {
                 <Select
                     label="Отрасль"
                     placeholder="Выберите отрасль"
-                    data={!is_catalogues_loading ? catalogues: [{value: 'Loading', label: 'Загрузка...'}]}
+                    data={!isCategoriesLoading ? categories: [{value: 'Loading', label: 'Загрузка...'}]}
                     rightSection={<img src={`${process.env.PUBLIC_URL}/images/expand.png`} alt="categories"/>}
                     rightSectionWidth={30}
                     styles={{rightSection: { pointerEvents: 'none', paddingRight: '17px' }}}

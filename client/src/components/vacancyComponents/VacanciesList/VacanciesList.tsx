@@ -11,7 +11,7 @@ import {Vacancy} from "services";
 
 export function VacanciesList() {
 
-    const {vacancies, isVacanciesLoading, refresh_vacancies} = useVacancies();
+    const {vacancies, isVacanciesLoading, refresh_vacancies, isVacanciesError} = useVacancies();
     const {current_page, total_page_amount, setCurrentPage} = usePaginationParams();
 
     useEffect(() => {
@@ -19,15 +19,18 @@ export function VacanciesList() {
     }, [current_page, refresh_vacancies])
 
 
+
     return (
         <>
+            {isVacanciesError && <Navigate to="/error"/>}
+
             {!isVacanciesLoading && vacancies ?
                 <>
                     {vacancies.length ?
                         <>
                             <ul className="vacancies-list">
                                 {vacancies!.map((vacancy: Vacancy) => (
-                                    <VacanciesListItem vacancy={vacancy}/>
+                                    <VacanciesListItem vacancy={vacancy} key={vacancy.id}/>
                                 ))}
                             </ul>
                             <Pagination
@@ -37,9 +40,7 @@ export function VacanciesList() {
                                 value={current_page}/>
                         </>
                         :
-                        <>
-                            <Navigate to={"/empty"}/>
-                        </>
+                        <Navigate to={"/empty"}/>
                     }
                 </>
                 :
