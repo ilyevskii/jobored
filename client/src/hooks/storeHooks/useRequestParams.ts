@@ -3,7 +3,7 @@ import {Dispatch} from "react";
 import {AnyAction} from "redux";
 
 import {RootState, updateCatalogueId, updatePaymentFrom, updatePaymentTo, updateKeywords} from "store";
-import {FiltersParams, SearchbarParams, RequestParams} from "services";
+import {RequestParams} from "services";
 
 interface requestParamsHook {
     catalogue_id: string;
@@ -13,6 +13,16 @@ interface requestParamsHook {
     setFiltersParams: (params: FiltersParams) => void;
     setSearchBarParams: (value: SearchbarParams) => void;
     getActualRequestParams: () => RequestParams;
+}
+
+interface FiltersParams {
+    catalogue_id: string;
+    payment_from: string;
+    payment_to: string;
+}
+
+interface SearchbarParams {
+    keywords: string;
 }
 
 export function useRequestParams(): requestParamsHook {
