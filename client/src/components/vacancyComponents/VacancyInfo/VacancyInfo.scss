@@ -1,14 +1,7 @@
-.vacancy-profession.single {
-    font-size: 28px;
-    color: var(--black);
-}
+@import "../vacancy";
 
-.vacancy-salary.single {
+.vacancy-info-subheader {
     font-size: 20px;
-}
-
-.vacancy-info-point {
+    color: var(--black);
     padding-top: 4px;
-    font-size: 20px;
-    color: var(--black);
 }

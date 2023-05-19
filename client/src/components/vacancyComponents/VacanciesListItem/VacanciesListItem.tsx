@@ -1,4 +1,4 @@
-import './VacanciesListItem.css';
+import './VacanciesListItem.scss';
 import React from 'react';
 
 import {Vacancy} from "services";

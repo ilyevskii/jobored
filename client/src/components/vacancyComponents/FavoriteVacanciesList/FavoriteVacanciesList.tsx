@@ -1,4 +1,4 @@
-import './FavoriteVacanciesList.css';
+import './FavoriteVacanciesList.scss';
 import React from 'react';
 
 import {useFavoriteVacancies, usePaginationParams} from "hooks";
@@ -15,6 +15,7 @@ export function FavoriteVacanciesList() {
     const {current_page, setCurrentPage} = usePaginationParams();
 
     const vacancies = getCurrentPageContent(current_page);
+
 
     return (
         <>

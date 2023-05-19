@@ -1,0 +1,74 @@
+@import "../../utilities";
+
+.vacancies-list {
+  @include flex-column(16px);
+  flex-grow: 1;
+  padding: 16px 0 40px 0;
+}
+
+.vacancy-container {
+  @include flex-row(90px);
+  @include border(var(--grey-200), 12px);
+  justify-content: space-between;
+  align-items: flex-start;
+  min-width: fit-content;
+  width: 100%;
+  background-color: var(--white);
+  padding: 25px;
+
+  &.info {
+    @include flex-column(16px);
+
+    ul {
+      padding-left: 20px;
+    }
+  }
+}
+
+.vacancy-info {
+  @include flex-column(13px);
+
+  p {
+    color: var(--black);
+    font-size: 16px;
+  }
+}
+
+.vacancy-profession {
+  color: var(--blue-main-500);
+  font-size: 20px;
+
+  .single {
+    font-size: 28px;
+    color: var(--black);
+  }
+}
+
+.vacancy-salary {
+  font-size: 16px;
+
+  .single {
+    font-size: 20px;
+  }
+}
+
+.vacancy-town {
+  @include flex-row(8px);
+  align-items: center;
+}
+
+.vacancy-info-separator {
+  font-family: Poppins, sans-serif;
+  color: var(--grey-600);
+  padding: 0 10px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+}

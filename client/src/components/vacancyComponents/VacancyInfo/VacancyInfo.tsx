@@ -1,11 +1,12 @@
-import './VacancyInfo.css';
-import React, {DOMElement, useEffect} from 'react';
+import './VacancyInfo.scss';
+import React from 'react';
 
 import {useParams} from 'react-router-dom';
 import {useVacancyInfo} from 'hooks';
 import {StarButton} from "components";
 
 import HTMLReactParser, {DOMNode} from 'html-react-parser';
+import {Loader} from "@mantine/core";
 
 
 export function VacancyInfo() {
@@ -33,14 +34,14 @@ export function VacancyInfo() {
 
                         if (tagChild && tagChild.name === 'b') {
                             const tagText = tagChild.children[0].data;
-                            return <p className="vacancy-info-point semi-bold">{tagText}</p>
+                            return <p className="vacancy-info-subheader semi-bold">{tagText}</p>
                         }
 
                         if (tagChild && tagChild.hasOwnProperty('data')) {
 
                             const tagText = tagChild.data.trim();
                             if (tagText.split(' ').length < 5 && tagText.endsWith(":")) {
-                                return <p className="vacancy-info-point semi-bold">{tagText}</p>
+                                return <p className="vacancy-info-subheader semi-bold">{tagText}</p>
                             }
 
                         }
@@ -49,7 +50,7 @@ export function VacancyInfo() {
 
                     if (nodeObject.type === 'tag' && nodeObject.name === 'b') {
                         const tagText = nodeObject.children[0].data;
-                        return <p className="vacancy-info-point semi-bold">{tagText}</p>
+                        return <p className="vacancy-info-subheader semi-bold">{tagText}</p>
                     }
 
                 }
@@ -61,7 +62,7 @@ export function VacancyInfo() {
 
     return (
         <main className="container narrow">
-            {!is_vacancy_loading ?
+            {!is_vacancy_loading && false ?
                 <>
                     <div className="vacancy-container">
                         <div className="vacancy-info">
@@ -80,15 +81,13 @@ export function VacancyInfo() {
                         </div>
                         <StarButton vacancy={vacancy}/>
                     </div>
-                    <div className="vacancy-container info-text">
+                    <div className="vacancy-container info">
                         {parseHtmlCode(vacancy.text!)}
                     </div>
                 </>
 
                 :
-                <div>
-                    Loading...
-                </div>
+                <Loader className="loader" size="80px"/>
             }
         </main>
     );

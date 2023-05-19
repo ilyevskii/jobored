@@ -1,4 +1,4 @@
-import './VacanciesList.css';
+import './VacanciesList.scss';
 import React, {useEffect} from 'react';
 
 import {Navigate} from 'react-router-dom';
@@ -18,10 +18,6 @@ export function VacanciesList() {
         refresh_vacancies();
     }, [current_page, refresh_vacancies])
 
-    useEffect(() => {
-        console.log(vacancies)
-        console.log(isVacanciesLoading)
-    })
 
     return (
         <>
@@ -47,9 +43,7 @@ export function VacanciesList() {
                     }
                 </>
                 :
-                <div className="loader-container">
-                    <Loader className="loader" size="80px"/>
-                </div>
+                <Loader className="loader" size="80px"/>
             }
         </>
     );
