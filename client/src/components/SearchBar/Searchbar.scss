@@ -1,4 +1,5 @@
-@import "../../index";
+@import "../../styles/utilities";
+
 
 .searchbar-form {
     @include flex-row(10px);
@@ -9,38 +10,37 @@
     padding: 8px 12px 8px 2px;
     transition: 0.15s ease;
 
+    .searchbar-input-wrapper {
+        width: 100%;
+
+        input {
+            background-color: $white;
+            border: none;
+            padding-right: 22.5px;
+        }
+
+        .reset-btn {
+            font-size: 25px;
+            color: $grey-400;
+            background: none;
+            transition: 0.25s ease;
+
+            &:hover {
+                color: $grey-500;
+            }
+        }
+    }
+
     &:hover {
-        border: 1px solid $grey-300;
+        border-color: $grey-300;
     }
 
     &:focus-within {
-        border: 1px solid $blue-600;
+        border-color: $blue-600;
     }
 
-    button {
+    .submit-btn {
         width: 85px;
         height: 32px;
-    }
-}
-
-.searchbar-input-wrapper {
-    width: 100%;
-
-    input {
-        background-color: $white;
-        border: none;
-        padding-right: 22.5px;
-    }
-}
-
-.reset-btn {
-    font-size: 25px;
-    color: $grey-400;
-    background: none;
-    transition: 0.25s ease;
-
-    &:hover {
-        cursor: pointer;
-        color: $grey-500;
     }
 }

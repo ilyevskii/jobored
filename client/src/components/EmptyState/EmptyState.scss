@@ -1,29 +1,30 @@
-@import "../../index";
+@import "../../styles/utilities";
+
 
 .empty-state-container {
+
     @include flex-column(32px);
     align-items: center;
     justify-content: center;
     padding-top: 120px;
-}
 
-.alert-text {
-    font-size: 24px;
-    color: $grey-900;
-}
+    .alert-text {
+        font-size: 24px;
+        color: $grey-900;
+    }
 
-.redirect-btn {
-    @include border(none, 8px);
-    font-size: 14px;
-    font-family: Open Sans, sans-serif;
-    color: $blue-600;
-    background-color: $blue-100;
-    padding: 10px 24px;
-    margin-top: 10px;
-    transition: 0.25s ease;
+    .redirect-btn {
+        @include border(none, 8px);
+        font-size: 14px;
+        font-family: Open Sans, sans-serif;
+        color: $blue-600;
+        background-color: $blue-100;
+        padding: 10px 24px;
+        margin-top: 10px;
+        transition: 0.25s ease;
 
-    &:hover {
-        cursor: pointer;
-        background-color: $blue-200;
+        &:hover {
+            background-color: $blue-200;
+        }
     }
 }

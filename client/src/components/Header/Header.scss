@@ -1,10 +1,11 @@
-@import "../../index";
+@import "../../styles/utilities";
+
 
 .site-header {
     @include flex-row(280px);
     align-items: center;
     width: 100%;
-    background-color: #FFFFFF;
+    background-color: $white;
     padding: 10px 235px;
 }
 
