@@ -1,23 +1,28 @@
-import './VacanciesList.scss';
-import React, {useEffect} from 'react';
+import "./VacanciesList.scss";
+import React, {useEffect} from "react";
 
-import {Navigate} from 'react-router-dom';
-import {Pagination, Loader} from "@mantine/core";
+import {Navigate} from "react-router-dom";
+import {Loader} from "@mantine/core";
 
-import {useVacancies, usePaginationParams} from "hooks";
-import {VacanciesListItem} from "components";
+import {useVacancies, usePaginationParams, useLinkParams} from "hooks";
+import {VacanciesListItem, VacanciesPagination} from "components";
 import {Vacancy} from "services";
 
 
 export function VacanciesList() {
 
-    const {vacancies, isVacanciesLoading, refresh_vacancies, isVacanciesError} = useVacancies();
-    const {current_page, total_page_amount, setCurrentPage} = usePaginationParams();
+    const {vacancies, isVacanciesLoading, isVacanciesError, refresh_vacancies} = useVacancies();
+    const {current_page, total_page_amount} = usePaginationParams();
+    const {setPageSearchParam} = useLinkParams();
+
 
     useEffect(() => {
         refresh_vacancies();
-    }, [current_page, refresh_vacancies])
+    }, [])
 
+    useEffect(() => {
+        setPageSearchParam(current_page);
+    }, [current_page])
 
 
     return (
@@ -33,11 +38,7 @@ export function VacanciesList() {
                                     <VacanciesListItem vacancy={vacancy} key={vacancy.id}/>
                                 ))}
                             </ul>
-                            <Pagination
-                                className="pagination"
-                                total={total_page_amount}
-                                onChange={setCurrentPage}
-                                value={current_page}/>
+                            <VacanciesPagination total={total_page_amount}/>
                         </>
                         :
                         <Navigate to={"/empty"}/>
