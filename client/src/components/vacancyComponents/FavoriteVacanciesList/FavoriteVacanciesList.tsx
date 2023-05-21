@@ -2,17 +2,16 @@ import './FavoriteVacanciesList.scss';
 import React from 'react';
 
 import {useFavoriteVacancies, usePaginationParams} from "hooks";
-import {VacanciesListItem} from "components";
+import {VacanciesListItem, VacanciesPagination} from "components";
 import {Vacancy} from "services";
 
-import {Pagination} from "@mantine/core";
 import {Navigate} from "react-router-dom";
 
 
 export function FavoriteVacanciesList() {
 
     const {favorite_vacancies, getCurrentPageContent} = useFavoriteVacancies();
-    const {current_page, setCurrentPage} = usePaginationParams();
+    const {current_page} = usePaginationParams();
 
     const vacancies = getCurrentPageContent(current_page);
 
@@ -26,12 +25,7 @@ export function FavoriteVacanciesList() {
                             <VacanciesListItem vacancy={vacancy}/>
                         ))}
                     </ul>
-                    <Pagination
-                        className="pagination"
-                        total={Math.ceil(favorite_vacancies.length / 4)}
-                        onChange={setCurrentPage}
-                        value={current_page}
-                    />
+                    <VacanciesPagination total={Math.ceil(favorite_vacancies.length / 4)}/>
                 </>
                 :
                 <Navigate to={"/empty"}/>
