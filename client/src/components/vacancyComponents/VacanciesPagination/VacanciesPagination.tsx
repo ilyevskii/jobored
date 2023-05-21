@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
+import "./VacanciesPagination.scss";
 
 import {Pagination} from "@mantine/core";
-
 import {usePaginationParams} from "hooks";
 
 interface PaginationProps {
     total: number;
 }
+
 
 export function VacanciesPagination(props: PaginationProps) {
 
@@ -21,6 +22,5 @@ export function VacanciesPagination(props: PaginationProps) {
                 onChange={setCurrentPage}
                 value={current_page}>
             </Pagination>
-
     );
 }
