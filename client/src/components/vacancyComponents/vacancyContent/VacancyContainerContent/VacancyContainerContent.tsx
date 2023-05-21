@@ -32,7 +32,7 @@ export function VacancyContainerContent(props: VacancyContainerContentProps) {
                     <span className="vacancy-info-separator">•</span>
                     <span>{vacancy.type_of_work}</span>
                 </p>
-                <p className="vacancy-town">
+                <p className="vacancy-location">
                     <img src={`${process.env.PUBLIC_URL}/images/location.png`} alt="location"/>
                     <span>{vacancy.town}</span>
                 </p>
