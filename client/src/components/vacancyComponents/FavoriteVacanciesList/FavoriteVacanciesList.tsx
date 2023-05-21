@@ -1,8 +1,8 @@
-import './FavoriteVacanciesList.scss';
-import React from 'react';
+import "../vacancy.scss";
+import React from "react";
 
 import {useFavoriteVacancies, usePaginationParams} from "hooks";
-import {VacanciesListItem, VacanciesPagination} from "components";
+import {VacanciesPagination, VacancyContainerContent} from "components";
 import {Vacancy} from "services";
 
 import {Navigate} from "react-router-dom";
@@ -22,7 +22,9 @@ export function FavoriteVacanciesList() {
                 <>
                     <ul className="vacancies-list">
                         {vacancies!.map((vacancy: Vacancy) => (
-                            <VacanciesListItem vacancy={vacancy}/>
+                            <li className="vacancy-container" key={vacancy.id}>
+                                <VacancyContainerContent vacancy={vacancy} is_list_item={true}/>
+                            </li>
                         ))}
                     </ul>
                     <VacanciesPagination total={Math.ceil(favorite_vacancies.length / 4)}/>

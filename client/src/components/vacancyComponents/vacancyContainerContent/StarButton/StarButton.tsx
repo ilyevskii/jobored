@@ -1,4 +1,4 @@
-import './StarButton.scss';
+import "./StarButton.scss";
 import React from "react";
 
 import {useFavoriteVacancies} from "hooks";

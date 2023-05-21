@@ -1,11 +1,11 @@
-import "./VacanciesList.scss";
+import "../vacancy.scss";
 import React, {useEffect} from "react";
 
 import {Navigate} from "react-router-dom";
 import {Loader} from "@mantine/core";
 
 import {useVacancies, usePaginationParams, useLinkParams} from "hooks";
-import {VacanciesListItem, VacanciesPagination} from "components";
+import {VacanciesPagination, VacancyContainerContent} from "components";
 import {Vacancy} from "services";
 
 
@@ -35,7 +35,9 @@ export function VacanciesList() {
                         <>
                             <ul className="vacancies-list">
                                 {vacancies!.map((vacancy: Vacancy) => (
-                                    <VacanciesListItem vacancy={vacancy} key={vacancy.id}/>
+                                    <li className="vacancy-container" key={vacancy.id}>
+                                        <VacancyContainerContent vacancy={vacancy} is_list_item={true}/>
+                                    </li>
                                 ))}
                             </ul>
                             <VacanciesPagination total={total_page_amount}/>
