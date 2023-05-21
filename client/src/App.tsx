@@ -1,17 +1,18 @@
-import React from 'react';
-import './App.css';
-import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
+import React from "react";
+import "./App.css";
+import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 
 import {EmptyState, Header, VacancyInfo} from "components";
 import {VacanciesPage, FavoriteVacanciesPage} from "pages";
 
 
-function App() {
+export default function App() {
   return (
       <Router>
           <Header/>
           <Routes>
-              <Route path="/" element={<VacanciesPage/>}/>
+              <Route path="/" element={<Navigate to="/vacancies"/>}/>
+              <Route path="/vacancies" element={<VacanciesPage/>}/>
               <Route path="/favorites" element={<FavoriteVacanciesPage/>}/>
               <Route path="/vacancy/:id" element={<VacancyInfo/>}/>
               <Route path="/error" element={<EmptyState is_error={true}/>}/>
@@ -21,5 +22,3 @@ function App() {
       </Router>
   );
 }
-
-export default App;
