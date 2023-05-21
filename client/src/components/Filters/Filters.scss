@@ -81,17 +81,7 @@
             }
         }
     }
-
-    .submit-btn {
-        @include border(none, 8px);
-        background: $blue-main-500;
-        font-weight: 500;
-        transition: 0.25s ease;
-
-        &:hover {
-            background-color: $blue-600;
-        }
-    }
 }
+
 
 
