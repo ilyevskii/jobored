@@ -14,12 +14,12 @@ export type Vacancy = {
     text?: string;
 }
 
-export type RequestParams = {
-    catalogue_id: string;
-    payment_from: string;
-    payment_to: string;
+export interface RequestParams extends Object {
+    category_id: string;
+    payment_from: string | number;
+    payment_to: string | number;
     keywords: string;
-    currentPage: number;
+    page: number;
 }
 
 export type Category = {

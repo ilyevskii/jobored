@@ -11,7 +11,7 @@ export class VacanciesService {
     private static readonly proxy_key: string =  process.env.REACT_APP_SUPERJOB_PROXY_KEY!
 
 
-    public static async getVacancies(params: RequestParams): Promise<ResultData> {
+    public static async getVacancies(params: any): Promise<ResultData> {
 
         try {
             if (!SuperjobService.access_token) await SuperjobService.authorize();
@@ -65,14 +65,15 @@ export class VacanciesService {
     private static buildVacanciesParams(params: RequestParams): string | undefined {
 
         try {
-            const {catalogue_id, payment_from, payment_to, keywords, currentPage}: RequestParams = params;
-            const vacancies_params: string[] = [`page=${currentPage}&count=4&published=1`];
+            const {category_id, payment_from, payment_to, keywords, page}: RequestParams = params;
+
+            const vacancies_params: string[] = [`page=${page - 1}&count=4&published=1`];
 
             if (keywords) vacancies_params.push(`keywords=${encodeURIComponent(keywords)}`);
-            if (catalogue_id) vacancies_params.push(`catalogues=${encodeURIComponent(catalogue_id)}`);
+            if (category_id) vacancies_params.push(`catalogues=${encodeURIComponent(category_id)}`);
 
             if (payment_from || payment_to) {
-                let order_url: string = "order_field=payment&order_direction=asc&no_agreement=1&";
+                let order_url: string = "order_field=payment&order_direction=desc&no_agreement=1&";
 
                 if (payment_from) order_url += `payment_from=${encodeURIComponent(payment_from)}`;
                 if (payment_to) order_url += `${payment_from && "&"}payment_to=${encodeURIComponent(payment_to)}`;
