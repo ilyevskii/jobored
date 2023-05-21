@@ -10,12 +10,12 @@
 .vacancy-container {
   @include flex-row(90px);
   @include border($grey-200, 12px);
-  justify-content: space-between;
   align-items: flex-start;
-  min-width: fit-content;
-  width: 100%;
   background-color: $white;
+  justify-content: space-between;
+  min-width: fit-content;
   padding: 25px;
+  width: 100%;
 
   &.info {
     @include flex-column(16px);
@@ -28,6 +28,6 @@
 
 .loader {
   position: absolute;
-  top: 50%;
   right: 50%;
+  top: 50%;
 }

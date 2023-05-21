@@ -9,18 +9,18 @@
     padding-top: 120px;
 
     .alert-text {
-        font-size: 24px;
         color: $grey-900;
+        font-size: 24px;
     }
 
     .redirect-btn {
         @include border(none, 8px);
+        background-color: $blue-100;
+        color: $blue-600;
         font-size: 14px;
         font-family: Open Sans, sans-serif;
-        color: $blue-600;
-        background-color: $blue-100;
-        padding: 10px 24px;
         margin-top: 10px;
+        padding: 10px 24px;
         transition: 0.25s ease;
 
         &:hover {

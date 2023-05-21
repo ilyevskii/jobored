@@ -1,18 +1,6 @@
 @import "./constants";
 
 
-@mixin flex-row($gap: 0) {
-  display: flex;
-  flex-direction: row;
-  gap: $gap;
-}
-
-@mixin flex-column($gap: 0) {
-  display: flex;
-  flex-direction: column;
-  gap: $gap;
-}
-
 @mixin border($border-color, $border-radius: 0) {
 
   @if $border-color != none {
@@ -23,6 +11,18 @@
   }
 
   border-radius: $border-radius;
+}
+
+@mixin flex-column($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin flex-row($gap: 0) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
 }
 
 .bold {

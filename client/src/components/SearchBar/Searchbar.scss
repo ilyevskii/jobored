@@ -2,32 +2,32 @@
 
 
 .searchbar-form {
-    @include flex-row(10px);
     @include border($grey-200, 8px);
-    justify-content: space-between;
+    @include flex-row(10px);
     align-items: center;
     background: $white;
+    justify-content: space-between;
     padding: 8px 12px 8px 2px;
     transition: 0.15s ease;
 
     .searchbar-input-wrapper {
         width: 100%;
 
-        input {
-            background-color: $white;
-            border: none;
-            padding-right: 22.5px;
-        }
-
         .reset-btn {
-            font-size: 25px;
-            color: $grey-400;
             background: none;
+            color: $grey-400;
+            font-size: 25px;
             transition: 0.25s ease;
 
             &:hover {
                 color: $grey-500;
             }
+        }
+
+        input {
+            background-color: $white;
+            border: none;
+            padding-right: 22.5px;
         }
     }
 
@@ -40,7 +40,7 @@
     }
 
     .submit-btn {
-        width: 85px;
         height: 32px;
+        width: 85px;
     }
 }

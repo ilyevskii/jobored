@@ -4,9 +4,9 @@
 .site-header {
     @include flex-row(280px);
     align-items: center;
-    width: 100%;
     background-color: $white;
     padding: 10px 235px;
+    width: 100%;
 }
 
 .logo {
@@ -14,10 +14,10 @@
     align-items: center;
 
     .logo-text {
-        font-family: Poppins, sans-serif;
-        font-weight: 600;
-        font-size: 24px;
         color: $black;
+        font-family: Poppins, sans-serif;
+        font-size: 24px;
+        font-weight: 600;
     }
 
     &:hover {
@@ -29,8 +29,8 @@
     @include flex-row(60px);
 
     .menu-item {
-        list-style-type: none;
         color: $black;
+        list-style-type: none;
         transition: 0.25s ease;
 
         &.active {
@@ -38,8 +38,8 @@
         }
 
         &:hover {
-            cursor: pointer;
             color: $blue-main-500;
+            cursor: pointer;
             font-weight: 500;
         }
     }
@@ -48,7 +48,7 @@
 
 @media (max-width: 1440px) {
     .main-header {
-        padding: 10px 162px;
         gap: 308px;
+        padding: 10px 162px;
     }
 }

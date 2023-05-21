@@ -4,9 +4,15 @@
 .vacancy-container-content {
   @include flex-column(13px);
 
-  p {
-    color: $black;
-    font-size: 16px;
+  .vacancy-info-separator {
+    color: $grey-600;
+    font-family: Poppins, sans-serif;
+    padding: 0 10px;
+  }
+
+  .vacancy-location {
+    @include flex-row(8px);
+    align-items: center;
   }
 
   .vacancy-profession {
@@ -14,8 +20,8 @@
     font-size: 20px;
 
     &.single {
-      font-size: 28px;
       color: $black;
+      font-size: 28px;
     }
   }
 
@@ -27,14 +33,8 @@
     }
   }
 
-  .vacancy-town {
-    @include flex-row(8px);
-    align-items: center;
-  }
-
-  .vacancy-info-separator {
-    font-family: Poppins, sans-serif;
-    color: $grey-600;
-    padding: 0 10px;
+  p {
+    color: $black;
+    font-size: 16px;
   }
 }
