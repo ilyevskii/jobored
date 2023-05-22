@@ -1,7 +1,7 @@
 import "../vacancy.scss";
 import React from "react";
 
-import {useFavoriteVacancies, usePaginationParams} from "hooks";
+import {useFavoriteVacancies, useLinkParams} from "hooks";
 import {VacanciesPagination, VacancyContainerContent} from "components";
 import {Vacancy} from "services";
 
@@ -11,9 +11,9 @@ import {Navigate} from "react-router-dom";
 export function FavoriteVacanciesList() {
 
     const {favorite_vacancies, getCurrentPageContent} = useFavoriteVacancies();
-    const {current_page} = usePaginationParams();
+    const {currentSearchParams} = useLinkParams();
 
-    const vacancies = getCurrentPageContent(current_page);
+    const vacancies = getCurrentPageContent(parseInt(currentSearchParams.get("page") || "1"));
 
 
     return (

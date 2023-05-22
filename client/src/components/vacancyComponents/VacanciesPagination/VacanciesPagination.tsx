@@ -2,7 +2,7 @@ import React from "react";
 import "./VacanciesPagination.scss";
 
 import {Pagination} from "@mantine/core";
-import {usePaginationParams} from "hooks";
+import {useLinkParams} from "hooks";
 
 interface PaginationProps {
     total: number;
@@ -11,7 +11,7 @@ interface PaginationProps {
 
 export function VacanciesPagination(props: PaginationProps) {
 
-    const {current_page, setCurrentPage} = usePaginationParams();
+    const {currentSearchParams, setPageSearchParam} = useLinkParams();
     const {total} = props;
 
 
@@ -19,8 +19,8 @@ export function VacanciesPagination(props: PaginationProps) {
             <Pagination
                 className="pagination"
                 total={total}
-                onChange={setCurrentPage}
-                value={current_page}>
+                onChange={setPageSearchParam}
+                value={parseInt(currentSearchParams.get("page") || "1")}>
             </Pagination>
     );
 }

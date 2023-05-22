@@ -4,7 +4,7 @@ import React, {useEffect} from "react";
 import {Navigate} from "react-router-dom";
 import {Loader} from "@mantine/core";
 
-import {useVacancies, usePaginationParams, useLinkParams} from "hooks";
+import {useVacancies, useLinkParams} from "hooks";
 import {VacanciesPagination, VacancyContainerContent} from "components";
 import {Vacancy} from "services";
 
@@ -12,17 +12,12 @@ import {Vacancy} from "services";
 export function VacanciesList() {
 
     const {vacancies, isVacanciesLoading, isVacanciesError, refresh_vacancies} = useVacancies();
-    const {current_page, total_page_amount} = usePaginationParams();
-    const {setPageSearchParam} = useLinkParams();
+    const {currentSearchParams} = useLinkParams();
 
 
     useEffect(() => {
         refresh_vacancies();
-    }, [])
-
-    useEffect(() => {
-        setPageSearchParam(current_page);
-    }, [current_page])
+    }, [currentSearchParams])
 
 
     return (
@@ -31,16 +26,16 @@ export function VacanciesList() {
 
             {!isVacanciesLoading && vacancies ?
                 <>
-                    {vacancies.length ?
+                    {vacancies.data.length ?
                         <>
                             <ul className="vacancies-list">
-                                {vacancies!.map((vacancy: Vacancy) => (
+                                {vacancies.data.map((vacancy: Vacancy) => (
                                     <li className="vacancy-container" key={vacancy.id}>
                                         <VacancyContainerContent vacancy={vacancy} is_list_item={true}/>
                                     </li>
                                 ))}
                             </ul>
-                            <VacanciesPagination total={total_page_amount}/>
+                            <VacanciesPagination total={vacancies.total}/>
                         </>
                         :
                         <Navigate to={"/empty"}/>
