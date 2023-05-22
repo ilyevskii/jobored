@@ -1,9 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {Vacancy} from "services";
-import {useState} from "react";
 
 interface menuState {
-    favorite_vacancies: Vacancy[];
+    favorite_vacancies: number[];
 }
 
 const initialState: menuState = {
@@ -14,7 +12,7 @@ const favoriteVacanciesReducer = createSlice({
     name: "menu_items",
     initialState,
     reducers: {
-        updateFavoriteVacancies: (state, action: PayloadAction<Vacancy[]>): void => {
+        updateFavoriteVacancies: (state, action: PayloadAction<number[]>): void => {
             state.favorite_vacancies = action.payload;
         }
     }
