@@ -2,18 +2,18 @@
 
 
 .filters-form {
-    @include flex-column(20px);
+    @include flex-column(1.25em);
     width: 100%;
 }
 
 .filters-container {
-    @include border($grey-200, 12px);
-    @include flex-column(32px);
+    @include border($grey-200, 0.75em);
+    @include flex-column(2em);
     align-items: flex-start;
     background: $white;
     height: fit-content;
-    min-width: 315px;
-    padding: 20px;
+    flex: 0 0.5 19.675em;
+    padding: 1.25em;
 
     .filters-topbar {
         @include flex-row();
@@ -23,27 +23,39 @@
 
         .filters-header {
             color: $black;
-            font-size: 20px;
+            font-size: 1.25em;
         }
 
         .reset-button {
             background-color: $white;
             color: $grey-500;
-            font-size: 14px;
+            font-size: 0.875em;
             font-weight: 500;
             transition: 0.25s ease;
 
             &:hover {
                 color: $grey-600;
             }
+
+            @media (max-width: 767px) {
+                font-size: 0.9em;
+            }
         }
     }
 
+    .rotate-in {
+        animation: rotate-in 0.2s linear forwards;
+    }
+
+    .rotate-out {
+        animation: rotate-out 0.2s linear forwards;
+    }
+
     .salary-range {
-        @include flex-column(8px);
+        @include flex-column(0.5em);
 
         .salary-input-control {
-            @include border(none, 10px);
+            @include border(none, 0.625em);
             color: $grey-500;
 
             &.down {
@@ -61,10 +73,11 @@
     }
 
     input {
-        @include border($grey-300, 8px);
+        @include border($grey-300, (0.5em));
         background: $white;
-        height: 42px;
-        padding: 8px 12px;
+        font-size: 0.875em;
+        height: 2.625em;
+        padding: 0.5em 0.75em;
         transition: 0.2s ease;
 
         &:focus {
@@ -78,10 +91,13 @@
 
     label {
         color: $black;
-        font-size: 16px;
+        font-size: 1em;
         font-weight: 700;
     }
-}
 
+    @media (max-width: 767px) {
+        flex: 0 0.5 0;
+    }
+}
 
 

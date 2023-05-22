@@ -1,0 +1,7 @@
+@import "../Filters";
+
+.collapse-btn {
+  @include flex-row();
+  justify-content: flex-end;
+  flex: 0.7;
+}
