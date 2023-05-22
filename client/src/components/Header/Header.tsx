@@ -21,10 +21,10 @@ export function Header() {
                 <ul className="menu-list">
                     <li
                         className={`menu-item${current_menu_item === 1 ? " active" : ""}`}
-                    ><a href="/">Поиск вакансий</a></li>
+                    ><a href="/vacancies?page=1">Поиск вакансий</a></li>
                     <li
                         className={`menu-item${current_menu_item === 2 ? " active" : ""}`}
-                    ><a href="/favorites">Избранное</a></li>
+                    ><a href="/favorites?page=1">Избранное</a></li>
                 </ul>
             </nav>
         </header>
