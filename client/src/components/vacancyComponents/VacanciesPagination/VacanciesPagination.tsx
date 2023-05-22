@@ -2,6 +2,7 @@ import React from "react";
 import "./VacanciesPagination.scss";
 
 import {Pagination} from "@mantine/core";
+import {useMediaQuery} from "react-responsive";
 import {useLinkParams} from "hooks";
 
 interface PaginationProps {
@@ -11,12 +12,14 @@ interface PaginationProps {
 
 export function VacanciesPagination(props: PaginationProps) {
 
-    const {currentSearchParams, setPageSearchParam} = useLinkParams();
     const {total} = props;
+    const {currentSearchParams, setPageSearchParam} = useLinkParams();
+    const isSmallScreen = useMediaQuery({maxWidth: "441px"});
 
 
     return (
             <Pagination
+                size={isSmallScreen ? "sm" : "md"}
                 classNames={{control: "control"}}
                 className="pagination"
                 total={total}

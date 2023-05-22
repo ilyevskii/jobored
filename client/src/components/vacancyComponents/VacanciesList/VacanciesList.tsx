@@ -36,7 +36,9 @@ export function VacanciesList() {
                     }
                 </>
                 :
-                <Loader className="loader" size="80px"/>
+                <div className="loader-wrapper">
+                    <Loader size="80px"/>
+                </div>
             }
         </>
     );

@@ -10,6 +10,11 @@
     padding-top: 1.5em;
     gap: 0.75em;
   }
+
+  @media (max-width: 441px) {
+    padding: 1em 0 1.5em 0;
+    gap: 0.75em;
+  }
 }
 
 .vacancy-container {
@@ -31,8 +36,10 @@
   }
 }
 
-.loader {
-  position: absolute;
-  right: 50%;
-  top: 50%;
+.loader-wrapper {
+  @include flex-row();
+  overflow: hidden;
+  height: 80vh;
+  align-items: center;
+  justify-content: center;
 }

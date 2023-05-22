@@ -37,7 +37,9 @@ export function FavoriteVacanciesList() {
                     }
                 </>
                 :
-                <Loader size="80px"/>
+                <div className="loader-wrapper">
+                    <Loader size="80px"/>
+                </div>
             }
         </>
     );
