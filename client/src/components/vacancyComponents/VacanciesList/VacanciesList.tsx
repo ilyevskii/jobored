@@ -1,23 +1,17 @@
+import React from "react";
 import "../vacancy.scss";
-import React, {useEffect} from "react";
 
 import {Navigate} from "react-router-dom";
 import {Loader} from "@mantine/core";
 
-import {useVacancies, useLinkParams} from "hooks";
+import {useVacancies} from "hooks";
 import {VacanciesPagination, VacancyContainerContent} from "components";
 import {Vacancy} from "services";
 
 
 export function VacanciesList() {
 
-    const {vacancies, isVacanciesLoading, isVacanciesError, refresh_vacancies} = useVacancies();
-    const {currentSearchParams} = useLinkParams();
-
-
-    useEffect(() => {
-        refresh_vacancies();
-    }, [currentSearchParams])
+    const {vacancies, isVacanciesLoading, isVacanciesError} = useVacancies();
 
 
     return (

@@ -1,8 +1,7 @@
-import "./EmptyState.scss";
 import React from "react";
+import "./EmptyState.scss";
 
 import {useNavigate} from "react-router-dom";
-import {useVacancies} from "../../hooks";
 
 interface EmptyStateProps {
     is_error?: boolean;
@@ -13,10 +12,8 @@ export function EmptyState(props: EmptyStateProps) {
 
     const {is_error} = props;
     const navigate = useNavigate();
-    const {refresh_vacancies} = useVacancies();
 
     const handleFindVacanciesClick = () => {
-        refresh_vacancies();
         navigate("/vacancies?page=1");
     }
 
