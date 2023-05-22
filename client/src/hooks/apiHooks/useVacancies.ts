@@ -10,12 +10,13 @@ interface VacanciesResult {
 
 export const useVacancies = () => {
 
-    const {currentSearchParams} = useLinkParams();
+    const queryParams = Object.fromEntries(useLinkParams().currentSearchParams);
 
-    const {data,  isLoading, isFetching, isError, error, refetch} = useQuery<VacanciesResult | undefined, Error>(['vacancies'],
+    const {data,  isLoading, isError, error} = useQuery<VacanciesResult | undefined, Error>(
+        ['vacancies', queryParams],
 
         async () =>  {
-            const result: ResultData = await VacanciesService.getVacancies(Object.fromEntries(currentSearchParams));
+            const result: ResultData = await VacanciesService.getVacancies(queryParams);
 
             if (result.type === "success") {
                 return {
@@ -28,16 +29,16 @@ export const useVacancies = () => {
             }
         },
         {
-            enabled: false
-        });
+            refetchOnWindowFocus: false,
+        }
+        );
 
 
     return {
         vacancies: data,
-        isVacanciesLoading: isLoading || isFetching,
+        isVacanciesLoading: isLoading,
         isVacanciesError: isError,
-        vacancies_error: error,
-        refresh_vacancies: refetch
+        vacancies_error: error
     };
 
 };
