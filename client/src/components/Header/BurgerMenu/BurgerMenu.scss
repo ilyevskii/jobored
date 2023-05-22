@@ -3,7 +3,6 @@
 
 .burger {
   color: $black;
-  position: relative;
 }
 
 .burger-dropdown {
@@ -11,6 +10,6 @@
   background: $white;
   padding: 0.375em 0.5em;
   position: absolute;
-  left: 20%;
-  top: 80%;
+  left: 20px;
+  top: 80px;
 }

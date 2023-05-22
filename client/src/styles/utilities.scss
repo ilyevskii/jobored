@@ -25,6 +25,47 @@
   gap: $gap;
 }
 
+@mixin size($height, $width) {
+  height: $height;
+  width: $width;
+}
+
+@keyframes rotate-in {
+  0% {
+    transform: rotateZ(180deg);
+  }
+  25% {
+    transform: rotateZ(135deg);
+  }
+  50% {
+    transform: rotateZ(90deg);
+  }
+  75% {
+    transform: rotateZ(45deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+@keyframes rotate-out {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(45deg);
+  }
+  50% {
+    transform: rotateZ(90deg);
+  }
+  75% {
+    transform: rotateZ(135deg);
+  }
+  100% {
+    transform: rotateZ(180deg);
+  }
+}
+
 .bold {
   font-weight: 600;
 }

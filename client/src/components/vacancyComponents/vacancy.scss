@@ -2,26 +2,31 @@
 
 
 .vacancies-list {
-  @include flex-column(16px);
+  @include flex-column(1em);
   flex-grow: 1;
-  padding: 16px 0 40px 0;
+  padding: 1em 0 2.5em 0;
+
+  @media (max-width: 767px) {
+    padding-top: 1.5em;
+    gap: 0.75em;
+  }
 }
 
 .vacancy-container {
-  @include flex-row(90px);
-  @include border($grey-200, 12px);
+  @include flex-row(5.625em);
+  @include border($grey-200, 0.75em);
   align-items: flex-start;
   background-color: $white;
   justify-content: space-between;
   min-width: fit-content;
-  padding: 25px;
+  padding: 1.5625em;
   width: 100%;
 
   &.info {
-    @include flex-column(16px);
+    @include flex-column(1em);
 
     ul {
-      padding-left: 20px;
+      padding-left: 1.25em;
     }
   }
 }
