@@ -1,6 +1,6 @@
 import React from "react";
 
-import {useFavoriteVacancies} from "hooks";
+import {useFavoritesFunctions} from "hooks";
 import {Vacancy} from "services";
 
 interface StarButtonProps {
@@ -11,12 +11,12 @@ interface StarButtonProps {
 export function StarButton(props: StarButtonProps) {
 
     const {vacancy} = props;
-    const {toggleFavoriteVacancy, isFavorite} = useFavoriteVacancies();
+    const {toggleFavoriteVacancy, isFavorite} = useFavoritesFunctions();
 
 
     return (
-        <button className="star-btn" onClick={() => toggleFavoriteVacancy(vacancy)}>
-            {isFavorite(vacancy) ?
+        <button className="star-btn" onClick={() => toggleFavoriteVacancy(vacancy.id)}>
+            {isFavorite(vacancy.id) ?
                 <img src={`${process.env.PUBLIC_URL}/images/star_filled.png`} alt="favourite"/>
                 :
                 <img src={`${process.env.PUBLIC_URL}/images/star.png`} alt="favourite"/>

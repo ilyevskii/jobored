@@ -1,36 +1,43 @@
 import "../vacancy.scss";
-import React from "react";
+import React, {useState} from "react";
 
-import {useFavoriteVacancies, useLinkParams} from "hooks";
+import {useFavoritesFunctions, useFavorites} from "hooks";
 import {VacanciesPagination, VacancyContainerContent} from "components";
 import {Vacancy} from "services";
 
 import {Navigate} from "react-router-dom";
+import {Loader} from "@mantine/core";
 
 
 export function FavoriteVacanciesList() {
 
-    const {favorite_vacancies, getCurrentPageContent} = useFavoriteVacancies();
-    const {currentSearchParams} = useLinkParams();
-
-    const vacancies = getCurrentPageContent(parseInt(currentSearchParams.get("page") || "1"));
+    const {favorite_vacancies} = useFavoritesFunctions();
+    const {favorites, isFavoritesLoading, isFavoritesError} = useFavorites();
 
 
     return (
         <>
-            {vacancies.length ?
+            {isFavoritesError && <Navigate to="/error"/>}
+
+            {!isFavoritesLoading ?
                 <>
-                    <ul className="vacancies-list">
-                        {vacancies!.map((vacancy: Vacancy) => (
-                            <li className="vacancy-container" key={vacancy.id}>
-                                <VacancyContainerContent vacancy={vacancy} is_list_item={true}/>
-                            </li>
-                        ))}
-                    </ul>
-                    <VacanciesPagination total={Math.ceil(favorite_vacancies.length / 4)}/>
+                    {favorites.data.length ?
+                        <>
+                            <ul className="vacancies-list">
+                                {favorites.data.map((vacancy: Vacancy) => (
+                                    <li className="vacancy-container" key={vacancy.id}>
+                                        <VacancyContainerContent vacancy={vacancy} is_list_item={true}/>
+                                    </li>
+                                ))}
+                            </ul>
+                            <VacanciesPagination total={Math.ceil(favorite_vacancies.length / 4)}/>
+                        </>
+                        :
+                        <Navigate to={"/empty"}/>
+                    }
                 </>
                 :
-                <Navigate to={"/empty"}/>
+                <Loader size="80px"/>
             }
         </>
     );
