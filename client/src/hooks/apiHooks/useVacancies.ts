@@ -1,22 +1,27 @@
 import {useQuery} from "react-query";
 
 import {VacanciesService, Vacancy, ResultData} from "services";
-import {usePaginationParams, useLinkParams} from "hooks";
+import {useLinkParams} from "hooks";
 
+interface VacanciesResult {
+    data: Vacancy[],
+    total: number
+}
 
 export const useVacancies = () => {
 
-    const {setTotalPageAmount} = usePaginationParams();
     const {currentSearchParams} = useLinkParams();
 
-    const {data,  isLoading, isFetching, isError, error, refetch} = useQuery<Vacancy[] | undefined, Error>(['vacancies'],
+    const {data,  isLoading, isFetching, isError, error, refetch} = useQuery<VacanciesResult | undefined, Error>(['vacancies'],
 
         async () =>  {
             const result: ResultData = await VacanciesService.getVacancies(Object.fromEntries(currentSearchParams));
 
             if (result.type === "success") {
-                setTotalPageAmount(Math.min(result.data.total, 125));
-                return result.data.vacancies;
+                return {
+                    data: result.data.vacancies,
+                    total: Math.min(result.data.total, 125)
+                }
             }
             else {
                 throw result.data;
