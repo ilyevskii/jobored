@@ -1,27 +1,28 @@
-import './EmptyState.scss';
-import React, {useEffect} from 'react';
+import "./EmptyState.scss";
+import React from "react";
 
 import {useNavigate} from "react-router-dom";
-import {useVacancies, useVacancyInfo} from "../../hooks";
+import {useVacancies} from "../../hooks";
 
 interface EmptyStateProps {
     is_error?: boolean;
 }
 
+
 export function EmptyState(props: EmptyStateProps) {
 
-    const navigate = useNavigate();
     const {is_error} = props;
+    const navigate = useNavigate();
     const {refresh_vacancies} = useVacancies();
 
     const handleFindVacanciesClick = () => {
         refresh_vacancies();
-        navigate("/");
+        navigate("/vacancies?page=1");
     }
 
 
     return (
-        <main className="empty-state-container">
+        <main className="alert-container">
             <img src={`${process.env.PUBLIC_URL}/images/empty.png`} alt="empty page"/>
             {is_error ?
                 <p className="alert-text semi-bold">Что-то пошло не так... Попробуйте снова!</p>
