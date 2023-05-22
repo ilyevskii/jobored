@@ -62,6 +62,34 @@ export class VacanciesService {
         }
     }
 
+    public static async getFavoriteVacancies(favorites: number[]): Promise<ResultData> {
+
+        try {
+            if (!SuperjobService.access_token) await SuperjobService.authorize();
+            if (!favorites.length) return {type: "success", data: {data: [], ids: []}}
+
+            const response = await axios.get(`${this.url}/2.0/vacancies?ids[]=${favorites.join('&ids[]=')}`,
+                {
+                    headers: {
+                        "x-secret-key": this.proxy_key,
+                        "X-Api-App-Id": this.client_secret,
+                        "Authorization": `Bearer ${SuperjobService.access_token}`
+                    }
+                });
+
+            return {
+                type: "success",
+                data: {
+                    data: response.data.objects.map((vacancy: any) => this.transformVacancy(vacancy)),
+                    ids: response.data.objects.map((vacancy: any) => vacancy.id)
+                }
+            }
+        }
+        catch (err) {
+            return await SuperjobService.handleError(err);
+        }
+    }
+
     private static buildVacanciesParams(params: RequestParams): string | undefined {
 
         try {
@@ -90,13 +118,21 @@ export class VacanciesService {
 
     private static transformVacancy(vacancy: any, is_list: boolean = true): Vacancy {
 
-        const salary = vacancy.payment_to && vacancy.payment_from ?
-            `${vacancy.payment_from} - ${vacancy.payment_to} ${vacancy.currency}` :
-            vacancy.payment_to ?
-                `до ${vacancy.payment_to} ${vacancy.currency}` :
-                vacancy.payment_from ?
-                    `от ${vacancy.payment_from} ${vacancy.currency}` :
-                    "по договорённости";
+        let salary: string;
+
+        if (vacancy.payment_to && vacancy.payment_from) {
+            if (vacancy.payment_to === vacancy.payment_from) salary = `${vacancy.payment_to} ${vacancy.currency}`;
+            else salary = `${vacancy.payment_from} - ${vacancy.payment_to} ${vacancy.currency}`;
+        }
+        else if (vacancy.payment_to) {
+            salary = `до ${vacancy.payment_to} ${vacancy.currency}`;
+        }
+        else if (vacancy.payment_from) {
+            salary = `от ${vacancy.payment_from} ${vacancy.currency}`
+        }
+        else {
+            salary = "по договорённости"
+        }
 
         const transformed_vacancy: Vacancy = {
             id: vacancy.id,
@@ -104,7 +140,7 @@ export class VacanciesService {
             firm_name: vacancy.firm_name,
             town: vacancy.town.title,
             type_of_work: vacancy.type_of_work.title,
-            salary: salary
+            salary: salary!
         }
 
         if (!is_list) transformed_vacancy.text = vacancy.vacancyRichText;
