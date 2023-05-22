@@ -39,7 +39,7 @@ export function Searchbar() {
                 icon={<img src={`${process.env.PUBLIC_URL}/images/search.png`} alt="search"/>}
                 rightSection={
                     searchbar_form.values["keywords"].length ?
-                        <button className="reset-btn" onClick={handleReset}>&times;</button>
+                        <button className="reset-btn" onClick={handleReset} type="button">&times;</button>
                         :
                         <></>
                 }
