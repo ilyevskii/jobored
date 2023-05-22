@@ -16,8 +16,8 @@ button:hover {
 }
 
 main {
+  @include flex-column();
   flex-grow: 1;
-  position: relative;
 }
 
 .container {
@@ -49,14 +49,15 @@ main {
   body {
     font-size: 15.5px;
   }
-   .container {
-     padding: 1.875em 0;
-     margin: 0 5%;
+  .container {
+   padding: 1.875em 0;
+   margin: 0 5%;
 
-     &.narrow {
-       margin: 0 11.25%;
-     }
+   &.narrow {
+     padding: 1.5em 0;
+     margin: 0 11.25%;
    }
+  }
 }
 
 @media (max-width: 767px) {
@@ -67,14 +68,22 @@ main {
     margin: 0 2.5%;
 
     &.narrow {
+      padding: 1.5em 0;
       margin: 0 5%;
     }
   }
 }
 
 @media (max-width: 591px) {
-  
   body {
     font-size: 15px;
+  }
+}
+
+@media (max-width: 441px) {
+  .container {
+    &.narrow {
+      padding: 0;
+    }
   }
 }
