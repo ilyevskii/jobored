@@ -29,7 +29,7 @@ main {
   &.narrow {
     @include flex-column(1.25em);
     padding: 1.875em 0;
-    margin: 0 23%;;
+    margin: 0 23%;
   }
 }
 
@@ -51,7 +51,11 @@ main {
   }
    .container {
      padding: 1.875em 0;
-     margin: 0 5%;;
+     margin: 0 5%;
+
+     &.narrow {
+       margin: 0 11.25%;
+     }
    }
 }
 
@@ -60,10 +64,16 @@ main {
     flex-direction: column;
     gap: 0.5em;
     padding: 1.5em 0;
+    margin: 0 2.5%;
+
+    &.narrow {
+      margin: 0 5%;
+    }
   }
 }
 
 @media (max-width: 591px) {
+  
   body {
     font-size: 15px;
   }
