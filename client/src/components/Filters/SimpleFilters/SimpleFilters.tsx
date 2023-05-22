@@ -11,7 +11,7 @@ export function SimpleFilters(props: FiltersProps) {
                 <h2 className="filters-header semi-bold">Фильтры</h2>
                 <button
                     className="reset-button"
-                    onClick={props.onReset}
+                    onClick={props.reset_func}
                     type="button">Сбросить все &times;</button>
             </div>
             <FiltersForm form={props.form}/>

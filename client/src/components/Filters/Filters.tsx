@@ -10,7 +10,7 @@ import {CollapseFilters, SimpleFilters} from "components";
 
 export interface FiltersProps {
     form: UseFormReturnType<any, any>,
-    onReset?: () => void;
+    reset_func?: () => void;
 }
 
 
@@ -43,9 +43,9 @@ export function Filters() {
             {isCategoriesError && <Navigate to="/error"/>}
 
             {!isMediumScreen ?
-                    <SimpleFilters form={filters_form} onReset={handleReset}/>
+                    <SimpleFilters form={filters_form} reset_func={handleReset}/>
                     :
-                    <CollapseFilters form={filters_form} onReset={handleReset}/>
+                    <CollapseFilters form={filters_form} reset_func={handleReset}/>
             }
         </>
     );

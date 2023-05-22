@@ -17,6 +17,7 @@ export function FiltersForm(props: FiltersProps) {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
+        if (props.reset_func) props.reset_func();
         setFiltersSearchParams(form.values);
     }
 
