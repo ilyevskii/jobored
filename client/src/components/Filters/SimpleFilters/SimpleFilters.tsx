@@ -1,5 +1,6 @@
-import {FiltersForm} from "components";
 import React from "react";
+
+import {FiltersForm} from "components";
 import {FiltersProps} from "../Filters";
 
 

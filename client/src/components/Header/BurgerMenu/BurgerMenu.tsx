@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import "./BurgerMenu.scss";
 
-import {Menu, Burger} from '@mantine/core';
+import {Menu, Burger} from "@mantine/core";
 import {useMenuItems} from "hooks";
 
 
@@ -11,7 +11,7 @@ export function BurgerMenu() {
 
 
     return (
-        <Menu trigger="click">
+        <Menu trigger="click" styles={{dropdown: {top: "10px"}}}>
             <Menu.Target>
                 <Burger
                     className="burger"
@@ -20,7 +20,7 @@ export function BurgerMenu() {
                 />
             </Menu.Target>
 
-            <Menu.Dropdown className="burger-dropdown">
+            <Menu.Dropdown className="burger-dropdown" style={{top: "10px"}}>
                 <Menu.Item className={`menu-item${current_menu_item === 1 ? " active" : ""}`}>
                     <a href="/vacancies?page=1">Поиск вакансий</a>
                 </Menu.Item>

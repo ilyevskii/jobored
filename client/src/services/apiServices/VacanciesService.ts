@@ -68,7 +68,7 @@ export class VacanciesService {
             if (!SuperjobService.access_token) await SuperjobService.authorize();
             if (!favorites.length) return {type: "success", data: {data: [], ids: []}}
 
-            const response = await axios.get(`${this.url}/2.0/vacancies?ids[]=${favorites.join('&ids[]=')}`,
+            const response = await axios.get(`${this.url}/2.0/vacancies?ids[]=${favorites.join("&ids[]=")}`,
                 {
                     headers: {
                         "x-secret-key": this.proxy_key,
@@ -109,7 +109,7 @@ export class VacanciesService {
                 vacancies_params.push(order_url);
             }
 
-            return vacancies_params.length ? `?${vacancies_params.join('&')}` : '';
+            return vacancies_params.length ? `?${vacancies_params.join("&")}` : "";
         }
         catch (err) {
             console.log(err);

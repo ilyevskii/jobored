@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "./SimpleMenu.scss";
 
 import {useMenuItems} from "hooks";

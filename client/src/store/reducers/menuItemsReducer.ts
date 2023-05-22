@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+
 interface menuState {
     current_menu_item: number;
 }
@@ -7,6 +8,7 @@ interface menuState {
 const initialState: menuState = {
     current_menu_item: 1
 };
+
 
 const menuItemsReducer = createSlice({
     name: "menu_items",
@@ -18,6 +20,6 @@ const menuItemsReducer = createSlice({
     }
 });
 
-export const {updateCurrentMenuItem} = menuItemsReducer.actions;
 
+export const {updateCurrentMenuItem} = menuItemsReducer.actions;
 export default menuItemsReducer.reducer;

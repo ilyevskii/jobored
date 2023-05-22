@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+
 import {Filters, Searchbar, VacanciesList} from "components";
 import {useMenuItems} from "hooks";
 
@@ -9,7 +10,7 @@ export function VacanciesPage() {
 
     useEffect(() => {
         setCurrentMenuItem(1);
-    }, [setCurrentMenuItem])
+    }, [])
 
 
     return (

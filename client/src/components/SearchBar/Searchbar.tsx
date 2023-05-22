@@ -1,5 +1,5 @@
-import "./Searchbar.scss";
 import React, {useEffect} from "react";
+import "./Searchbar.scss";
 
 import {Input, Button} from "@mantine/core";
 import {useForm} from "@mantine/form";

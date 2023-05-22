@@ -1,5 +1,5 @@
-import "./VacancyContainerContent.scss";
 import React from "react";
+import "./VacancyContainerContent.scss";
 
 import {StarButton} from "components";
 import {Vacancy} from "services";

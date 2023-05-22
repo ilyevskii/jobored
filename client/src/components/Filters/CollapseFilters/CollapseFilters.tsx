@@ -8,8 +8,6 @@ import {FiltersForm} from "components";
 import {FiltersProps} from "../Filters";
 
 
-
-
 export function CollapseFilters(props: FiltersProps) {
 
     const [opened, {toggle}] = useDisclosure(false);

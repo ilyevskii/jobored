@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+
 interface menuState {
     favorite_vacancies: number[];
 }
 
 const initialState: menuState = {
-    favorite_vacancies: localStorage.getItem('favorite_vacancies') ? JSON.parse(localStorage.getItem('favorite_vacancies')!) : []
+    favorite_vacancies: localStorage.getItem("favorite_vacancies") ? JSON.parse(localStorage.getItem("favorite_vacancies")!) : []
 };
+
 
 const favoriteVacanciesReducer = createSlice({
     name: "menu_items",
@@ -18,6 +20,6 @@ const favoriteVacanciesReducer = createSlice({
     }
 });
 
-export const {updateFavoriteVacancies} = favoriteVacanciesReducer.actions;
 
+export const {updateFavoriteVacancies} = favoriteVacanciesReducer.actions;
 export default favoriteVacanciesReducer.reducer;

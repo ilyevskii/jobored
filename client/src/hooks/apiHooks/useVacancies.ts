@@ -13,7 +13,7 @@ export const useVacancies = () => {
     const queryParams = Object.fromEntries(useLinkParams().currentSearchParams);
 
     const {data,  isLoading, isError, error} = useQuery<VacanciesResult | undefined, Error>(
-        ['vacancies', queryParams],
+        ["vacancies", queryParams],
 
         async () =>  {
             const result: ResultData = await VacanciesService.getVacancies(queryParams);

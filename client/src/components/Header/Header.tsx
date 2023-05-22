@@ -19,7 +19,7 @@ export function Header() {
                 <img className="logo-image" src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="logo"/>
                 <h1 className="logo-text">Jobored</h1>
             </div>
-            {!isSmallScreen ?
+            {isSmallScreen ?
                 <BurgerMenu/>
                 :
                 <SimpleMenu/>

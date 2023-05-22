@@ -4,7 +4,7 @@ import {CategoriesService, Category, ResultData} from "services";
 
 export const useCategories = () => {
 
-    const {data, isLoading, isError, error} = useQuery<Category[] | undefined, Error>(['categories'],
+    const {data, isLoading, isError, error} = useQuery<Category[] | undefined, Error>(["categories"],
         async () => {
             const result: ResultData = await CategoriesService.getCategories();
 

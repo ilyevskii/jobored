@@ -1,12 +1,12 @@
-import './SingleVacancyInfo.scss';
-import React from 'react';
-
-import {Navigate, useParams} from 'react-router-dom';
-import {useVacancyInfo} from 'hooks';
-import {VacancyContainerContent} from "components";
-import {HtmlParserService} from "services";
+import React from "react";
+import "./SingleVacancyInfo.scss";
 
 import {Loader} from "@mantine/core";
+import {Navigate, useParams} from "react-router-dom";
+
+import {useVacancyInfo} from "hooks";
+import {VacancyContainerContent} from "components";
+import {HtmlParserService} from "services";
 
 
 export function SingleVacancyInfo() {

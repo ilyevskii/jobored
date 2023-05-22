@@ -5,7 +5,7 @@ import {VacanciesService, Vacancy, ResultData} from "services";
 
 export const useVacancyInfo = (id: string) => {
 
-    const {data, isLoading, isError, error} = useQuery<Vacancy | undefined, Error>(['vacancy', id],
+    const {data, isLoading, isError, error} = useQuery<Vacancy | undefined, Error>(["vacancy", id],
         async () => {
             const result: ResultData = await VacanciesService.getVacancyInfo(id);
 

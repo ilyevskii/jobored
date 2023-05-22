@@ -1,12 +1,12 @@
+import React from "react";
 import "../vacancy.scss";
-import React, {useState} from "react";
+
+import {Navigate} from "react-router-dom";
+import {Loader} from "@mantine/core";
 
 import {useFavoritesFunctions, useFavorites} from "hooks";
 import {VacanciesPagination, VacancyContainerContent} from "components";
 import {Vacancy} from "services";
-
-import {Navigate} from "react-router-dom";
-import {Loader} from "@mantine/core";
 
 
 export function FavoriteVacanciesList() {

@@ -16,7 +16,7 @@ export const useFavoritesFunctions = () => {
     }
 
     useEffect(() => {
-        localStorage.setItem('favorite_vacancies', JSON.stringify(favorite_vacancies));
+        localStorage.setItem("favorite_vacancies", JSON.stringify(favorite_vacancies));
     }, [favorite_vacancies])
 
     const toggleFavoriteVacancy = (vacancy_id: number): void => {

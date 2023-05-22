@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect} from "react";
+
 import {FavoriteVacanciesList} from "components";
-import {useMenuItems} from "../hooks";
+import {useMenuItems} from "hooks";
 
 
 export function FavoriteVacanciesPage() {
@@ -9,7 +10,7 @@ export function FavoriteVacanciesPage() {
 
     useEffect(() => {
         setCurrentMenuItem(2);
-    }, [setCurrentMenuItem])
+    }, [])
 
 
     return (

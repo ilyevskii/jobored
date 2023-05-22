@@ -2,6 +2,7 @@ import React from "react";
 
 import HTMLReactParser, {DOMNode} from "html-react-parser";
 
+
 export class HtmlParserService {
 
     public static parseCode(code: string): JSX.Element | JSX.Element[] | string {
@@ -11,27 +12,27 @@ export class HtmlParserService {
                 replace: (node: DOMNode) => {
                     const nodeObject: any = {...node};
 
-                    if (nodeObject.type === 'tag' && nodeObject.name === 'br') {
+                    if (nodeObject.type === "tag" && nodeObject.name === "br") {
                         return <></>;
                     }
 
-                    if (nodeObject.type === 'tag' && nodeObject.children[0] && nodeObject.children[0].name === 'br') {
+                    if (nodeObject.type === "tag" && nodeObject.children[0] && nodeObject.children[0].name === "br") {
                         return <></>;
                     }
 
-                    if (nodeObject.type === 'tag' && nodeObject.name === 'p') {
+                    if (nodeObject.type === "tag" && nodeObject.name === "p") {
 
                         let tagChild = nodeObject.children[0];
 
-                        if (tagChild && tagChild.name === 'b') {
+                        if (tagChild && tagChild.name === "b") {
                             const tagText = tagChild.children[0].data;
                             return <p className="vacancy-info-subheader semi-bold">{tagText}</p>
                         }
 
-                        if (tagChild && tagChild.hasOwnProperty('data')) {
+                        if (tagChild && tagChild.hasOwnProperty("data")) {
 
                             const tagText = tagChild.data.trim();
-                            if (tagText.split(' ').length < 5 && tagText.endsWith(":")) {
+                            if (tagText.split(" ").length < 5 && tagText.endsWith(":")) {
                                 return <p className="vacancy-info-subheader semi-bold">{tagText}</p>
                             }
 
@@ -39,7 +40,7 @@ export class HtmlParserService {
 
                     }
 
-                    if (nodeObject.type === 'tag' && nodeObject.name === 'b') {
+                    if (nodeObject.type === "tag" && nodeObject.name === "b") {
                         const tagText = nodeObject.children[0].data;
                         return <p className="vacancy-info-subheader semi-bold">{tagText}</p>
                     }

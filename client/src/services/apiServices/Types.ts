@@ -3,7 +3,6 @@ export type ResultData = {
     data: any;
 }
 
-
 export type Vacancy = {
     id: number;
     profession: string;

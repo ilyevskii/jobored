@@ -16,7 +16,7 @@ export const useFavorites = () => {
     const favorites = getCurrentPageVacancies(parseInt(currentSearchParams.get("page")!))
 
 
-    const {data, isLoading, isError, error} = useQuery<FavoritesResult | undefined, Error>(['favorites', currentSearchParams.get("page")!],
+    const {data, isLoading, isError, error} = useQuery<FavoritesResult | undefined, Error>(["favorites", currentSearchParams.get("page")!],
         async () => {
             const result: ResultData = await VacanciesService.getFavoriteVacancies(favorites);
 

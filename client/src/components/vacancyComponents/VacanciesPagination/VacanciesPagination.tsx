@@ -17,6 +17,7 @@ export function VacanciesPagination(props: PaginationProps) {
 
     return (
             <Pagination
+                classNames={{control: "control"}}
                 className="pagination"
                 total={total}
                 onChange={setPageSearchParam}
