@@ -2,21 +2,31 @@
 
 
 .site-header {
-    @include flex-row(280px);
+    @include flex-row(17.5em);
     align-items: center;
     background-color: $white;
-    padding: 10px 235px;
     width: 100%;
+    gap: 21%;
+    padding: 0.625em 11.25%;
+
+    @media screen and (max-width: 591px) {
+        gap: 0;
+        justify-content: space-between;
+    }
 }
 
 .logo {
-    @include flex-row(12px);
+    @include flex-row(0.75em);
     align-items: center;
+
+    .logo-image {
+        @include size(1.875em, 1.875em);
+    }
 
     .logo-text {
         color: $black;
         font-family: Poppins, sans-serif;
-        font-size: 24px;
+        font-size: 1.5em;
         font-weight: 600;
     }
 
@@ -25,30 +35,25 @@
     }
 }
 
-.menu-list {
-    @include flex-row(60px);
 
-    .menu-item {
-        color: $black;
-        list-style-type: none;
-        transition: 0.25s ease;
+.menu-item {
+    color: $black;
+    list-style-type: none;
+    transition: 0.25s ease;
 
-        &.active {
-            color: $blue-main-500;
-        }
+    &.active {
+        color: $blue-main-500;
+    }
 
-        &:hover {
-            color: $blue-main-500;
-            cursor: pointer;
-            font-weight: 500;
-        }
+    &:hover {
+        color: $blue-main-500;
+        cursor: pointer;
+        font-weight: 500;
     }
 }
 
-
-@media (max-width: 1440px) {
-    .main-header {
-        gap: 308px;
-        padding: 10px 162px;
+@media screen and (max-width: 1023px) {
+    .site-header {
+        padding: 0.625em 5%;
     }
 }

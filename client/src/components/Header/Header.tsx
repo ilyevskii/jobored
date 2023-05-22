@@ -1,32 +1,29 @@
-import "./Header.scss";
 import React from "react";
+import "./Header.scss";
 
-import {useMenuItems} from "hooks";
 import {useNavigate} from "react-router-dom";
+import {useMediaQuery} from "react-responsive";
+
+import {BurgerMenu, SimpleMenu} from "components";
 
 
 export function Header() {
 
-    const {current_menu_item} = useMenuItems();
     const navigate = useNavigate();
+    const isSmallScreen = useMediaQuery({maxWidth: "591px"});
 
 
     return (
         <header className="site-header">
             <div className="logo" onClick={() => navigate("/vacancies?page=1")}>
-                <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="logo"/>
+                <img className="logo-image" src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="logo"/>
                 <h1 className="logo-text">Jobored</h1>
             </div>
-            <nav id="menu">
-                <ul className="menu-list">
-                    <li
-                        className={`menu-item${current_menu_item === 1 ? " active" : ""}`}
-                    ><a href="/vacancies?page=1">Поиск вакансий</a></li>
-                    <li
-                        className={`menu-item${current_menu_item === 2 ? " active" : ""}`}
-                    ><a href="/favorites?page=1">Избранное</a></li>
-                </ul>
-            </nav>
+            {!isSmallScreen ?
+                <BurgerMenu/>
+                :
+                <SimpleMenu/>
+            }
         </header>
     );
 }
