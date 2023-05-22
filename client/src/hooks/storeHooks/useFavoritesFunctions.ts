@@ -3,15 +3,13 @@ import {Dispatch, useEffect} from "react";
 import {AnyAction} from "redux";
 
 import {RootState, updateFavoriteVacancies} from "store";
-import {useFavorites} from "hooks";
 
 
-export const useFavoriteVacancies = (page: number) => {
+export const useFavoritesFunctions = () => {
 
     const dispatch: Dispatch<AnyAction> = useDispatch();
     const favorite_vacancies: number[] = useSelector((state: RootState) => state.favorite_vacancies.favorite_vacancies);
-    const favorites_ids = favorite_vacancies.slice((page-1) * 4, Math.min((page-1) * 4 + 4, favorite_vacancies.length));
-    const {favorites, isFavoritesError, isFavoritesLoading, favoritesError} = useFavorites(favorites_ids);
+
 
     const setFavoriteVacancies = (vacancies: number[]) => {
         dispatch(updateFavoriteVacancies(vacancies));
@@ -49,10 +47,6 @@ export const useFavoriteVacancies = (page: number) => {
         toggleFavoriteVacancy,
         favorite_vacancies,
         getCurrentPageVacancies,
-        isFavorite,
-        favorites,
-        isFavoritesError,
-        isFavoritesLoading,
-        favoritesError
+        isFavorite
     }
 };
