@@ -49,7 +49,7 @@ export function Filters() {
 
             <div className="filters-topbar">
                 <h2 className="filters-header semi-bold">Фильтры</h2>
-                <button onClick={handleReset} className="reset-button">Сбросить все &times;</button>
+                <button onClick={handleReset} className="reset-button" type="button">Сбросить все &times;</button>
             </div>
             <form onSubmit={handleSubmit} className="filters-form">
                 <Select
