@@ -35,6 +35,7 @@ export function Searchbar() {
             <Input
                 name="searchbar"
                 className="searchbar-input-wrapper"
+                data-elem="search-input"
                 placeholder="Введите название вакансии"
                 icon={<img src={`${process.env.PUBLIC_URL}/images/search.png`} alt="search"/>}
                 rightSection={
@@ -46,7 +47,7 @@ export function Searchbar() {
                 styles={{rightSection: { width: "auto" }}}
                 {...searchbar_form.getInputProps("keywords")}
             />
-            <Button type="submit" className="submit-btn">
+            <Button type="submit" className="submit-btn" data-elem="search-button">
                 Поиск
             </Button>
         </form>

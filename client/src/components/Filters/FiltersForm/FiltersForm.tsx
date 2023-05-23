@@ -26,6 +26,7 @@ export function FiltersForm(props: FiltersProps) {
                 label="Отрасль"
                 placeholder="Выберите отрасль"
                 data={!isCategoriesLoading ? categories : [{value: "Loading", label: "Загрузка...", disabled: true}]}
+                data-elem="industry-select"
                 rightSection={<img src={`${process.env.PUBLIC_URL}/images/expand.png`} alt="categories"/>}
                 rightSectionWidth={30}
                 styles={{rightSection: { pointerEvents: "none", paddingRight: "17px" }}}
@@ -35,6 +36,7 @@ export function FiltersForm(props: FiltersProps) {
                 <NumberInput
                     label="Оклад"
                     placeholder="От"
+                    data-elem="salary-from-input"
                     step={1000}
                     min={0}
                     classNames={{
@@ -45,6 +47,7 @@ export function FiltersForm(props: FiltersProps) {
                 />
                 <NumberInput
                     placeholder="До"
+                    data-elem="salary-to-input"
                     step={1000}
                     min={0}
                     classNames={{
@@ -54,7 +57,7 @@ export function FiltersForm(props: FiltersProps) {
                     {...form.getInputProps("payment_to")}
                 />
             </div>
-            <Button type="submit" className="submit-btn">
+            <Button type="submit" className="submit-btn" data-elem="search-button">
                 Применить
             </Button>
         </form>

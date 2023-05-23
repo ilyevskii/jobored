@@ -15,7 +15,11 @@ export function StarButton(props: StarButtonProps) {
 
 
     return (
-        <button className="star-btn" onClick={() => toggleFavoriteVacancy(vacancy.id)}>
+        <button
+            className="star-btn"
+            data-elem={`vacancy-${vacancy.id}-shortlist-button`}
+            onClick={() => toggleFavoriteVacancy(vacancy.id)}
+        >
             {isFavorite(vacancy.id) ?
                 <img src={`${process.env.PUBLIC_URL}/images/star_filled.png`} alt="favourite"/>
                 :

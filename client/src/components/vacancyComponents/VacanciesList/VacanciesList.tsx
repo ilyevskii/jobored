@@ -24,7 +24,7 @@ export function VacanciesList() {
                         <>
                             <ul className="vacancies-list">
                                 {vacancies.data.map((vacancy: Vacancy) => (
-                                    <li className="vacancy-container" key={vacancy.id}>
+                                    <li className="vacancy-container" key={vacancy.id} data-elem={`vacancy-${vacancy.id}`}>
                                         <VacancyContainerContent vacancy={vacancy} is_list_item={true}/>
                                     </li>
                                 ))}
