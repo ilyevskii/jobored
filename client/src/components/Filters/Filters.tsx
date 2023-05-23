@@ -9,7 +9,7 @@ import {useCategories, useLinkParams} from "hooks";
 import {CollapseFilters, SimpleFilters} from "components";
 
 export interface FiltersProps {
-    form: UseFormReturnType<any, any>,
+    form: UseFormReturnType<any, any>;
     reset_func?: () => void;
 }
 
