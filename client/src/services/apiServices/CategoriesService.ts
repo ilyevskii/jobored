@@ -37,7 +37,7 @@ export class CategoriesService {
 
     private static transformCategory(category: any):  Category {
         return {
-            value: category.key,
+            value: category.key.toString(),
             label: category.title_trimmed
         }
     }
