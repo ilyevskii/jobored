@@ -29,7 +29,9 @@ export function SingleVacancyInfo() {
                     </div>
                 </>
                 :
-                <Loader className="loader" size="80px"/>
+                <div className="loader-wrapper">
+                    <Loader className="loader" size="80px"/>
+                </div>
              }
         </main>
     );
