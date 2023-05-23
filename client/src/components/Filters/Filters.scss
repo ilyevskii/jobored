@@ -12,7 +12,7 @@
     align-items: flex-start;
     background: $white;
     height: fit-content;
-    flex: 0 0.5 19.675em;
+    min-width: 19.675em;
     padding: 1.25em;
 
     .filters-topbar {
@@ -95,8 +95,8 @@
         font-weight: 700;
     }
 
-    @media screen and (max-width: 767px) {
-        flex: 0 0.5 0;
+    @media screen and (max-width: 1023px) {
+        min-width: 17em;
     }
 }
 
