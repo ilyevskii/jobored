@@ -6,12 +6,12 @@
   flex-grow: 1;
   padding: 1em 0 2.5em 0;
 
-  @media (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     padding-top: 1.5em;
     gap: 0.75em;
   }
 
-  @media (max-width: 441px) {
+  @media screen and (max-width: 441px) {
     padding: 1em 0 1.5em 0;
     gap: 0.75em;
   }

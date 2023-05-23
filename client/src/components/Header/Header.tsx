@@ -17,7 +17,7 @@ export function Header() {
         <header className="site-header">
             <div className="logo" onClick={() => navigate("/vacancies?page=1")}>
                 <img className="logo-image" src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="logo"/>
-                <h1 className="logo-text">Jobored</h1>
+                <h1 className="logo-text semi-bold">Jobored</h1>
             </div>
             {isSmallScreen ?
                 <BurgerMenu/>

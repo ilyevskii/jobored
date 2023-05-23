@@ -6,11 +6,6 @@ body {
   font-size: 16px;
 }
 
-button {
-  transform-origin: center;
-
-}
-
 button:hover {
   cursor: pointer;
 }
@@ -45,7 +40,7 @@ main {
   }
 }
 
-@media (max-width: 1023px) {
+@media screen and (max-width: 1023px) {
   body {
     font-size: 15.5px;
   }
@@ -60,7 +55,7 @@ main {
   }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .container {
     flex-direction: column;
     gap: 0.5em;
@@ -74,13 +69,13 @@ main {
   }
 }
 
-@media (max-width: 591px) {
+@media screen and (max-width: 591px) {
   body {
     font-size: 15px;
   }
 }
 
-@media (max-width: 441px) {
+@media screen and (max-width: 441px) {
   .container {
     &.narrow {
       padding: 0;

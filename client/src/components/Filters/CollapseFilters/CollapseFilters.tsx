@@ -16,7 +16,7 @@ export function CollapseFilters(props: FiltersProps) {
     return (
         <Box className="filters-container">
             <Group className="filters-topbar">
-                <h2 className="filters-header semi-bold">Фильтры</h2>
+                <h2 className="filters-header bold">Фильтры</h2>
                 <button className="reset-button" onReset={props.reset_func} type="button">
                     Сбросить все &times;
                 </button>

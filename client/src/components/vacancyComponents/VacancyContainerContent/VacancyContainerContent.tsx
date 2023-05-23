@@ -23,12 +23,12 @@ export function VacancyContainerContent(props: VacancyContainerContentProps) {
                         <a href={`/vacancy/${vacancy.id}`}>{vacancy.profession}</a>
                     </h3>
                     :
-                    <h2 className="vacancy-profession single semi-bold">
+                    <h2 className="vacancy-profession single bold">
                         {vacancy.profession}
                     </h2>
                 }
                 <p className={`vacancy-salary ${!is_list_item ? " single" : ""}`}>
-                    <span className="semi-bold">з/п {vacancy.salary}</span>
+                    <span className="bold">з/п {vacancy.salary}</span>
                     <span className="vacancy-info-separator">•</span>
                     <span>{vacancy.type_of_work}</span>
                 </p>

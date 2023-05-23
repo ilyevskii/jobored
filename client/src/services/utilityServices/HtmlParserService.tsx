@@ -26,14 +26,14 @@ export class HtmlParserService {
 
                         if (tagChild && tagChild.name === "b") {
                             const tagText = tagChild.children[0].data;
-                            return <p className="vacancy-info-subheader semi-bold">{tagText}</p>
+                            return <p className="vacancy-info-subheader bold">{tagText}</p>
                         }
 
                         if (tagChild && tagChild.hasOwnProperty("data")) {
 
                             const tagText = tagChild.data.trim();
                             if (tagText.split(" ").length < 5 && tagText.endsWith(":")) {
-                                return <p className="vacancy-info-subheader semi-bold">{tagText}</p>
+                                return <p className="vacancy-info-subheader bold">{tagText}</p>
                             }
 
                         }
@@ -42,7 +42,7 @@ export class HtmlParserService {
 
                     if (nodeObject.type === "tag" && nodeObject.name === "b") {
                         const tagText = nodeObject.children[0].data;
-                        return <p className="vacancy-info-subheader semi-bold">{tagText}</p>
+                        return <p className="vacancy-info-subheader bold">{tagText}</p>
                     }
 
                 }

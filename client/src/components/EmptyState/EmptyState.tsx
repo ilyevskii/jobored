@@ -22,9 +22,9 @@ export function EmptyState(props: EmptyStateProps) {
         <main className="alert-container">
             <img src={`${process.env.PUBLIC_URL}/images/empty.png`} alt="empty page"/>
             {is_error ?
-                <p className="alert-text semi-bold">Что-то пошло не так... Попробуйте снова!</p>
+                <p className="alert-text bold">Что-то пошло не так... Попробуйте снова!</p>
                 :
-                <p className="alert-text semi-bold">Упс, здесь еще ничего нет!</p>
+                <p className="alert-text bold">Упс, здесь еще ничего нет!</p>
             }
             <button className="redirect-btn bold" onClick={handleFindVacanciesClick}>Поиск Вакансий</button>
         </main>
