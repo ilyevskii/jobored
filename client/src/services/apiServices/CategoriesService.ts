@@ -19,6 +19,7 @@ export class CategoriesService {
             const response = await axios.get(`${this.url}/2.0/catalogues/`,
                 {
                     headers: {
+                        "Content-Type": "application/json",
                         "x-secret-key": this.proxy_key,
                         "X-Api-App-Id": this.client_secret,
                         "Authorization": `Bearer ${SuperjobService.access_token}`

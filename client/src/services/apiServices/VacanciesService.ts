@@ -19,6 +19,7 @@ export class VacanciesService {
             const response = await axios.get(`${this.url}/2.0/vacancies/${this.buildVacanciesParams(params)}`,
                 {
                     headers: {
+                        "Content-Type": "application/json",
                         "x-secret-key": this.proxy_key,
                         "X-Api-App-Id": this.client_secret,
                         "Authorization": `Bearer ${SuperjobService.access_token}`
@@ -46,6 +47,7 @@ export class VacanciesService {
             const response = await axios.get(`${this.url}/2.0/vacancies/${vacancy_id}`,
                 {
                     headers: {
+                        "Content-Type": "application/json",
                         "x-secret-key": this.proxy_key,
                         "X-Api-App-Id": this.client_secret,
                         "Authorization": `Bearer ${SuperjobService.access_token}`
@@ -71,6 +73,7 @@ export class VacanciesService {
             const response = await axios.get(`${this.url}/2.0/vacancies?ids[]=${favorites.join("&ids[]=")}`,
                 {
                     headers: {
+                        "Content-Type": "application/json",
                         "x-secret-key": this.proxy_key,
                         "X-Api-App-Id": this.client_secret,
                         "Authorization": `Bearer ${SuperjobService.access_token}`

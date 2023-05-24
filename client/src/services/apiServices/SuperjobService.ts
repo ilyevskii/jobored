@@ -26,7 +26,9 @@ export class SuperjobService {
                 `${this.url}/2.0/oauth2/password/?login=${this.login}&password=${this.password}&client_id=${this.client_id}&client_secret=${this.client_secret}`,
                 {
                     headers: {
-                        "x-secret-key": this.proxy_key
+                        "Content-Type": "application/json",
+                        "x-secret-key": this.proxy_key,
+                        "X-Api-App-Id": this.client_secret
                     }
                 });
 
@@ -49,7 +51,9 @@ export class SuperjobService {
                 `${this.url}/2.0/oauth2/refresh_token/?refresh_token=${this.refresh_token}&client_id=${this.client_id}&client_secret=${this.client_secret}`,
                 {
                     headers: {
-                        "x-secret-key": this.proxy_key
+                        "Content-Type": "application/json",
+                        "x-secret-key": this.proxy_key,
+                        "X-Api-App-Id": this.client_secret
                     }
                 });
 
