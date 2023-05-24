@@ -30,6 +30,7 @@ export function FiltersForm(props: FiltersProps) {
     return (
         <form onSubmit={handleSubmit} className="filters-form" id="filters">
             <Select
+                allowDeselect
                 label="Отрасль"
                 placeholder="Выберите отрасль"
                 data={!isCategoriesLoading ? categories : [{value: "Loading", label: "Загрузка...", disabled: true}]}
