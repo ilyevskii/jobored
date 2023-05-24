@@ -71,6 +71,8 @@ export class SuperjobService {
             await this.refreshAccessToken();
         }
 
+        console.error(error);
+
         return {
             type: "error",
             data: {
