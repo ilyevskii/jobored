@@ -18,8 +18,8 @@ export default function App() {
                   <Route path=":id" element={<SingleVacancyInfo/>}/>
               </Route>
               <Route path="/error" element={<EmptyState is_error={true}/>}/>
-              <Route path="/empty" element={<EmptyState/>}/>
-              <Route path="*" element={<Navigate to="/empty" replace={true}/>}/>
+              <Route path="/404" element={<EmptyState/>}/>
+              <Route path="*" element={<Navigate to="/404"/>}/>
           </Routes>
       </Router>
   );

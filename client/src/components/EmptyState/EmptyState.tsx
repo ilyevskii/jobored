@@ -5,12 +5,13 @@ import {useNavigate} from "react-router-dom";
 
 interface EmptyStateProps {
     is_error?: boolean;
+    is_button?: boolean;
 }
 
 
 export function EmptyState(props: EmptyStateProps) {
 
-    const {is_error} = props;
+    const {is_error, is_button = true} = props;
     const navigate = useNavigate();
 
     const handleFindVacanciesClick = () => {
@@ -26,7 +27,15 @@ export function EmptyState(props: EmptyStateProps) {
                 :
                 <p className="alert-text bold">Упс, здесь еще ничего нет!</p>
             }
-            <button className="redirect-btn bold" onClick={handleFindVacanciesClick}>Поиск Вакансий</button>
+            {is_button &&
+                <button
+                    className="redirect-btn bold"
+                    onClick={handleFindVacanciesClick}
+                >
+                    Поиск Вакансий
+                </button>
+            }
+
         </main>
     );
 }

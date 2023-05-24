@@ -33,7 +33,7 @@ export function FavoriteVacanciesList() {
                             <VacanciesPagination total={Math.ceil(favorite_vacancies.length / 4)}/>
                         </>
                         :
-                        <Navigate to={"/empty"}/>
+                        <Navigate to={"/404"}/>
                     }
                 </>
                 :

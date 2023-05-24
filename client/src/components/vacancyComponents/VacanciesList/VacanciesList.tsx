@@ -5,7 +5,7 @@ import {Navigate} from "react-router-dom";
 import {Loader} from "@mantine/core";
 
 import {useVacancies} from "hooks";
-import {VacanciesPagination, VacancyContainerContent} from "components";
+import {EmptyState, VacanciesPagination, VacancyContainerContent} from "components";
 import {Vacancy} from "services";
 
 
@@ -32,7 +32,7 @@ export function VacanciesList() {
                             <VacanciesPagination total={vacancies.total}/>
                         </>
                         :
-                        <Navigate to={"/empty"}/>
+                        <EmptyState is_button={false}/>
                     }
                 </>
                 :
