@@ -10,7 +10,7 @@ import {FiltersProps} from "../Filters";
 
 export function CollapseFilters(props: FiltersProps) {
 
-    const [opened, {toggle}] = useDisclosure(false);
+    const [opened, setOpened] = useDisclosure(false);
 
 
     return (
@@ -20,7 +20,7 @@ export function CollapseFilters(props: FiltersProps) {
                 <button className="reset-button" onClick={props.reset_func} type="button">
                     Сбросить все &times;
                 </button>
-                <button type="button" onClick={toggle} className="collapse-btn">
+                <button type="button" onClick={setOpened.toggle} className="collapse-btn">
                     <img
                         className={opened ? "rotate-out" : "rotate-in"}
                         src={`${process.env.PUBLIC_URL}/images/expand.png`}
@@ -29,7 +29,7 @@ export function CollapseFilters(props: FiltersProps) {
             </Group>
 
             <Collapse in={opened} style={{width: "100%"}}>
-                <FiltersForm form={props.form} reset_func={toggle}/>
+                <FiltersForm form={props.form} reset_func={setOpened.close}/>
             </Collapse>
         </Box>
     );
