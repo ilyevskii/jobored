@@ -27,14 +27,14 @@ export function Filters() {
     const filters_form: UseFormReturnType<any, any> = useForm(
         {initialValues: {
                 category_id: category_id || "",
-                payment_from: payment_from ? parseInt(payment_from) : "",
-                payment_to: payment_to ? parseInt(payment_to) : ""
+                payment_from: payment_from && !isNaN(Number(payment_from)) ? Number(payment_from) : "",
+                payment_to: payment_to && !isNaN(Number(payment_to)) ? parseInt(payment_to) : ""
             }
         });
 
     const handleReset = (): void => {
-        (document.querySelector(".reset-btn") as HTMLInputElement).click();
         filters_form.reset();
+        (document.querySelector(".reset-btn") as HTMLInputElement)?.click();
         resetSearchParams();
     }
 

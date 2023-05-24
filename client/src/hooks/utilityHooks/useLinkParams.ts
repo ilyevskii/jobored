@@ -20,6 +20,8 @@ export function useLinkParams() {
 
     const setFiltersSearchParams = (filters: FiltersParams): void => {
 
+        resetSearchParams(false);
+
         if (filters.payment_from) currentSearchParams.set("payment_from", filters.payment_from.toString());
         if (filters.payment_to) currentSearchParams.set("payment_to", filters.payment_to.toString());
         if (filters.category_id) currentSearchParams.set("category_id", filters.category_id);
@@ -30,14 +32,14 @@ export function useLinkParams() {
         setSearchParams(currentSearchParams);
     }
 
-    const resetSearchParams = (): void => {
+    const resetSearchParams = (is_full_reset: boolean = true): void => {
         currentSearchParams.delete("payment_from");
         currentSearchParams.delete("payment_to");
         currentSearchParams.delete("category_id");
         currentSearchParams.delete("keywords");
         currentSearchParams.set("page", "1");
 
-        setSearchParams(currentSearchParams);
+        if (is_full_reset) setSearchParams(currentSearchParams);
     }
 
 

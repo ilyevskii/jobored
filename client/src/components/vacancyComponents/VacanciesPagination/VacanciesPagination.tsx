@@ -24,7 +24,8 @@ export function VacanciesPagination(props: PaginationProps) {
                 className="pagination"
                 total={total}
                 onChange={setPageSearchParam}
-                value={parseInt(currentSearchParams.get("page") || "1")}>
+                value={currentSearchParams.get("page") && !isNaN(Number(currentSearchParams.get("page"))) ?
+                       Number(currentSearchParams.get("page"))! : 1}>
             </Pagination>
     );
 }
