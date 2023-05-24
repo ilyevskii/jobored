@@ -17,7 +17,7 @@ export function CollapseFilters(props: FiltersProps) {
         <Box className="filters-container">
             <Group className="filters-topbar">
                 <h2 className="filters-header bold">Фильтры</h2>
-                <button className="reset-button" onReset={props.reset_func} type="button">
+                <button className="reset-button" onClick={props.reset_func} type="button">
                     Сбросить все &times;
                 </button>
                 <button type="button" onClick={toggle} className="collapse-btn">
