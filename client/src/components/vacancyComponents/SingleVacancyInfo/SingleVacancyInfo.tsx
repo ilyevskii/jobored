@@ -1,32 +1,38 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./SingleVacancyInfo.scss";
 
 import {Loader} from "@mantine/core";
-import {Navigate, useParams} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 
-import {useVacancyInfo} from "hooks";
+import {useLinkParams, useVacancyInfo} from "hooks";
 import {VacancyContainerContent} from "components";
 import {HtmlParserService} from "services";
 
 
 export function SingleVacancyInfo() {
 
-    const {id} = useParams();
-    const {vacancy, isVacancyLoading, isVacancyError} = useVacancyInfo(id!);
+    const {currentSearchParams} = useLinkParams();
+    const {vacancy, isVacancyLoading, vacancyError} = useVacancyInfo(currentSearchParams.get("id") || "");
 
 
     return (
         <main className="container narrow">
-            {isVacancyError && <Navigate to="/error"/>}
+            {(vacancyError || !currentSearchParams.get("id")) ? <Navigate to="/error"/> : <></>}
 
             {!isVacancyLoading ?
                 <>
-                    <div className="vacancy-container">
-                        <VacancyContainerContent vacancy={vacancy} is_list_item={false}/>
-                    </div>
-                    <div className="vacancy-container info">
-                        {HtmlParserService.parseCode(vacancy.text!)}
-                    </div>
+                    {vacancy ?
+                        <>
+                            <div className="vacancy-container">
+                                <VacancyContainerContent vacancy={vacancy} is_list_item={false}/>
+                            </div>
+                            <div className="vacancy-container info">
+                                {HtmlParserService.parseCode(vacancy.text!)}
+                            </div>
+                        </>
+                        :
+                        <Navigate to="/404"/>
+                    }
                 </>
                 :
                 <div className="loader-wrapper">

@@ -14,9 +14,7 @@ export default function App() {
               <Route path="/" element={<Navigate to="vacancies"/>}/>
               <Route path="/vacancies" element={<VacanciesPage/>}/>
               <Route path="/favorites" element={<FavoriteVacanciesPage/>}/>
-              <Route path="/vacancy/*">
-                  <Route path=":id" element={<SingleVacancyInfo/>}/>
-              </Route>
+              <Route path="/vacancy" element={<SingleVacancyInfo/>}/>
               <Route path="/error" element={<EmptyState is_error={true}/>}/>
               <Route path="/404" element={<EmptyState/>}/>
               <Route path="*" element={<Navigate to="/404"/>}/>

@@ -20,7 +20,7 @@ export function VacancyContainerContent(props: VacancyContainerContentProps) {
             <div className="vacancy-container-content">
                 {is_list_item ?
                     <h3 className="vacancy-profession bold">
-                        <a href={`/vacancy/${vacancy.id}`}>{vacancy.profession}</a>
+                        <a href={`/vacancy?id=${vacancy.id}`}>{vacancy.profession}</a>
                     </h3>
                     :
                     <h2 className="vacancy-profession single bold">

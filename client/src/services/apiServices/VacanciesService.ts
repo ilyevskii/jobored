@@ -58,7 +58,7 @@ export class VacanciesService {
             }
         }
         catch (err) {
-            return await SuperjobService.handleError(err);
+            throw await SuperjobService.handleError(err);
         }
     }
 
