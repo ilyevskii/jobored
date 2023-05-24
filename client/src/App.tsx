@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
+import {HashRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 
 import {EmptyState, Header, SingleVacancyInfo} from "components";
 import {VacanciesPage, FavoriteVacanciesPage} from "pages";
