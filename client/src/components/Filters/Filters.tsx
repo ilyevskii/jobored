@@ -33,6 +33,7 @@ export function Filters() {
         });
 
     const handleReset = (): void => {
+        (document.querySelector(".reset-btn") as HTMLInputElement).click();
         filters_form.reset();
         resetSearchParams();
     }

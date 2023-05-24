@@ -15,16 +15,17 @@ export function FiltersForm(props: FiltersProps) {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
+        const keywords: string = (document.querySelector(".searchbar-input") as HTMLInputElement).value
         if (props.reset_func) props.reset_func();
-        setFiltersSearchParams(form.values);
+        setFiltersSearchParams({...form.values, keywords});
     }
 
-
     return (
-        <form onSubmit={handleSubmit} className="filters-form">
+        <form onSubmit={handleSubmit} className="filters-form" id="filters">
             <Select
                 label="Отрасль"
                 placeholder="Выберите отрасль"
+                id="category_id-input"
                 data={!isCategoriesLoading ? categories : [{value: "Loading", label: "Загрузка...", disabled: true}]}
                 data-elem="industry-select"
                 rightSection={<img src={`${process.env.PUBLIC_URL}/images/expand.png`} alt="categories"/>}
@@ -36,6 +37,7 @@ export function FiltersForm(props: FiltersProps) {
                 <NumberInput
                     label="Оклад"
                     placeholder="От"
+                    id="payment_from-input"
                     data-elem="salary-from-input"
                     step={1000}
                     min={0}
@@ -47,6 +49,7 @@ export function FiltersForm(props: FiltersProps) {
                 />
                 <NumberInput
                     placeholder="До"
+                    id="payment_to-input"
                     data-elem="salary-to-input"
                     step={1000}
                     min={0}
