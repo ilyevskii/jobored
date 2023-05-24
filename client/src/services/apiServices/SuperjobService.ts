@@ -67,16 +67,16 @@ export class SuperjobService {
 
     public static async handleError(error: any): Promise<ResultData> {
 
-        if (error.response.status === 410 && error.response.data.error === "invalid_token") {
+        if (error.response?.status === 410 && error.response?.data.error === "invalid_token") {
             await this.refreshAccessToken();
         }
 
         return {
             type: "error",
             data: {
-                status_code: error.response.status,
-                error: error.response.data.error,
-                message: error.response.data.message
+                status_code: error.response?.status,
+                error: error.response?.data.error,
+                message: error.response?.data.message
             }
         }
     }
