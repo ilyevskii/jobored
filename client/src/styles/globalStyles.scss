@@ -1,0 +1,84 @@
+@import "utilities";
+
+body {
+  background: $background-color;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+main {
+  @include flex-column();
+  flex-grow: 1;
+}
+
+.container {
+  @include flex-row(1.875em);
+  justify-content: space-between;
+  padding: 1.875em 0;
+  margin: 0 11.25%;
+
+  &.narrow {
+    @include flex-column(1.25em);
+    padding: 1.875em 0;
+    margin: 0 23%;
+  }
+}
+
+.submit-btn {
+  @include border(none, 0.5em);
+  background: $blue-main-500;
+  font-size: 0.875em;
+  font-weight: 500;
+  transition: 0.25s ease;
+
+  &:hover {
+    background-color: $blue-600;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  body {
+    font-size: 15.5px;
+  }
+  .container {
+   padding: 1.875em 0;
+   margin: 0 5%;
+
+   &.narrow {
+     padding: 1.5em 0;
+     margin: 0 11.25%;
+   }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 1.5em 0;
+    margin: 0 2.5%;
+
+    &.narrow {
+      padding: 1.5em 0;
+      margin: 0 5%;
+    }
+  }
+}
+
+@media screen and (max-width: 591px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 441px) {
+  .container {
+    &.narrow {
+      padding: 0;
+    }
+  }
+}

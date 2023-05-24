@@ -1,0 +1,11 @@
+.pagination {
+  justify-content: center;
+
+  @media (max-width: 441px) {
+    gap: 0.24em;
+
+    .control {
+      min-width: 0;
+    }
+  }
+}

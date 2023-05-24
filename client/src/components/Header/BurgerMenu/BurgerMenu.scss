@@ -1,0 +1,19 @@
+@import "../Header";
+
+.burger {
+  color: $black;
+}
+
+.burger-dropdown {
+  @include border($grey-200, 0.5em);
+  width: 10em !important;
+  background: $white;
+  padding: 0.375em 0.5em;
+  position: absolute;
+  left: calc(100% - 11em) !important;
+  top: 3.5em !important;
+
+  @media screen and (max-width: 441px) {
+    left: calc(100% - 10.5em) !important;
+  }
+}

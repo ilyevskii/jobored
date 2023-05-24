@@ -1,0 +1,5 @@
+@import "../Header";
+
+.menu-list {
+  @include flex-row(3.75em);
+}

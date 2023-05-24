@@ -1,0 +1,103 @@
+@import "../../styles/utilities";
+
+
+.filters-form {
+    @include flex-column(1.25em);
+    width: 100%;
+}
+
+.filters-container {
+    @include border($grey-200, 0.75em);
+    @include flex-column(2em);
+    align-items: flex-start;
+    background: $white;
+    height: fit-content;
+    min-width: 19.675em;
+    padding: 1.25em;
+
+    .filters-topbar {
+        @include flex-row();
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .filters-header {
+            color: $black;
+            font-size: 1.25em;
+        }
+
+        .reset-button {
+            background-color: $white;
+            color: $grey-500;
+            font-size: 0.875em;
+            font-weight: 500;
+            transition: 0.25s ease;
+
+            &:hover {
+                color: $grey-600;
+            }
+
+            @media screen and (max-width: 767px) {
+                font-size: 0.9em;
+            }
+        }
+    }
+
+    .rotate-in {
+        animation: rotate-in 0.2s linear forwards;
+    }
+
+    .rotate-out {
+        animation: rotate-out 0.2s linear forwards;
+    }
+
+    .salary-range {
+        @include flex-column(0.5em);
+
+        .salary-input-control {
+            @include border(none, 0.625em);
+            color: $grey-500;
+
+            &.down {
+                align-items: flex-start;
+            }
+
+            &.up {
+                align-items: flex-end;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    input {
+        @include border($grey-300, (0.5em));
+        background: $white;
+        font-size: 0.875em;
+        height: 2.625em;
+        padding: 0.5em 0.75em;
+        transition: 0.2s ease;
+
+        &:focus {
+            border-color: $blue-main-500;
+        }
+
+        &:hover {
+            border-color: $grey-500;
+        }
+    }
+
+    label {
+        color: $black;
+        font-size: 1em;
+        font-weight: 700;
+    }
+
+    @media screen and (max-width: 1023px) {
+        min-width: 17em;
+    }
+}
+
+

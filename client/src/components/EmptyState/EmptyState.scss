@@ -1,0 +1,30 @@
+@import "../../styles/utilities";
+
+
+.alert-container {
+
+    @include flex-column(32px);
+    align-items: center;
+    justify-content: center;
+    padding-top: 120px;
+
+    .alert-text {
+        color: $grey-900;
+        font-size: 24px;
+    }
+
+    .redirect-btn {
+        @include border(none, 8px);
+        background-color: $blue-100;
+        color: $blue-600;
+        font-size: 14px;
+        font-family: Open Sans, sans-serif;
+        margin-top: 10px;
+        padding: 10px 24px;
+        transition: 0.25s ease;
+
+        &:hover {
+            background-color: $blue-200;
+        }
+    }
+}

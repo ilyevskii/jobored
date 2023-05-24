@@ -1,0 +1,52 @@
+@import "../../../styles/utilities";
+
+
+.vacancy-container-content {
+  @include flex-column(0.8125em);
+
+  .vacancy-info-separator {
+    color: $grey-600;
+    font-family: Poppins, sans-serif;
+    padding: 0 0.625em;
+  }
+
+  .vacancy-location {
+    @include flex-row(0.5em);
+    align-items: center;
+  }
+
+  .vacancy-profession {
+    color: $blue-main-500;
+    font-size: 1.25em;
+
+    &.single {
+      color: $black;
+      font-size: 1.75em;
+    }
+  }
+
+  .vacancy-salary {
+    font-size: 1em;
+
+    &.single {
+      font-size: 1.25em;
+    }
+  }
+
+  p {
+    color: $black;
+    font-size: 1em;
+  }
+
+  @media screen and (max-width: 441px) {
+
+    .vacancy-info-separator {
+      padding: 0;
+      display: none;
+    }
+
+    span {
+      display: block;
+    }
+  }
+}

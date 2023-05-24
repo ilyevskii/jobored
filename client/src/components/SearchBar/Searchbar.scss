@@ -1,0 +1,45 @@
+@import "../../styles/utilities";
+
+
+.searchbar-form {
+    @include border($grey-200, 0.5em);
+    @include flex-row(0.625em);
+    align-items: center;
+    background: $white;
+    justify-content: space-between;
+    padding: 0.5em 0.75em 0.5em 0.125em;
+    transition: 0.15s ease;
+
+    .searchbar-input-wrapper {
+        width: 100%;
+
+        .reset-btn {
+            background: none;
+            color: $grey-400;
+            font-size: 1.5em;
+            transition: 0.25s ease;
+
+            &:hover {
+                color: $grey-500;
+            }
+        }
+
+        input {
+            background-color: $white;
+            border: none;
+            padding-right: 1.4em;
+        }
+    }
+
+    &:hover {
+        border-color: $grey-300;
+    }
+
+    &:focus-within {
+        border-color: $blue-600;
+    }
+
+    .submit-btn {
+        height: 2em;
+    }
+}
