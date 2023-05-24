@@ -34,7 +34,7 @@ export class SuperjobService {
             cookies.set("access_token", response.data.access_token);
 
             this.refresh_token = response.data.refresh_token;
-            cookies.set("refresh_token", response.data.access_token);
+            cookies.set("refresh_token", response.data.refresh_token);
 
         }
         catch (err: any) {
@@ -57,7 +57,7 @@ export class SuperjobService {
             cookies.set("access_token", response.data.access_token);
 
             this.refresh_token = response.data.refresh_token;
-            cookies.set("refresh_token", response.data.access_token);
+            cookies.set("refresh_token", response.data.refresh_token);
         }
         catch (err: any) {
             await this.handleError(err);
