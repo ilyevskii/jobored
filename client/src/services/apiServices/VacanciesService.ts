@@ -104,7 +104,7 @@ export class VacanciesService {
                 let order_url: string = "order_field=payment&order_direction=desc&no_agreement=1&";
 
                 if (payment_from) order_url += `payment_from=${encodeURIComponent(payment_from)}`;
-                if (payment_to) order_url += `${payment_from && "&"}payment_to=${encodeURIComponent(payment_to)}`;
+                if (payment_to) order_url += `${payment_from ? "&" : ""}payment_to=${encodeURIComponent(payment_to)}`;
 
                 vacancies_params.push(order_url);
             }
