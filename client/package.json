@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "homepage": "https://ilyevskii.github.io/jobored",
+  "homepage": "https://ilyevskii.github.io/jobored-app",
   "dependencies": {
     "@mantine/core": "^6.0.10",
     "@mantine/form": "^6.0.10",
